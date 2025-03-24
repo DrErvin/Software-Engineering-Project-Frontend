@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+  <title>Job-Career Platform</title>
+  <link rel="stylesheet" href="css/main.css" />
+
+</head>
+
+<body>
+  <!-- Header Section -->
+  <header class="main-header">
+    <nav class="nav">
+      <img src="img/logo.jpg" alt="Job-Career logo" class="nav__logo" id="logo" />
+      <ul class="nav__links">
+        <li class="nav__item">
+          <!-- <button data-section-to-show="home" class="nav__link">Home</button> -->
+          <a class="nav__link" id="homeBtn" href="index.html">Home</a>
+        </li>
+        <li class="nav__item">
+          <a class="nav__link" href="#featured-section">Featured</a>
+        </li>
+        <li class="nav__item">
+          <a class="nav__link" href="#">Newsletter</a>
+        </li>
+        <!-- <li class="nav__item">
+          <a class="nav__link" href="#">Meetups</a>
+        </li> -->
+        <!-- <li class="nav__item">
+            <a class="nav__link nav__link--btn btn--show-modal" href="#"
+              >Post a Listing</a
+            >
+          </li>
+          <li class="nav__item">
+            <a class="nav__link nav__link--btn btn--show-modal" href="#"
+              >Log In/Sign Up</a
+            >
+          </li> -->
+      </ul>
+      <!-- Buttons (Post a Listing and Log In/Sign Up) -->
+      <div class="nav__buttons">
+        <button class="nav__button" id="publishOpportunities">Publish Jobs</button>
+        <button class="nav__button" id="logInSignUp">Log In/Sign Up</button>
+      </div>
+    </nav>
+  </header>
+
+  <!-- Search and Featured opportunities Sections -->
+  <div id="main-content" class="">
+    <!-- Main Content with Search Form and Intro Text -->
+    <section class="intro-section">
+      <div class="container">
+        <h1 class="intro-title">Find your dream Job</h1>
+        <p class="intro-text">
+          Search from thousands of jobs in multiple sectors and
+          locations.
+        </p>
+      </div>
+    </section>
+
+    <!-- Search Form Section -->
+    <section class="search-section">
+      <div class="container search-container">
+        <form class="search-form">
+          <div class="search-inputs">
+            <input type="text" placeholder="Location" />
+            <input type="text" placeholder="Title or Keyword" />
+            <select name="field-of-study" class="dropdown" id="field-of-study">
+              <option value="" disabled selected>Select Field of Work</option>
+              <option>Catering</option>
+              <option>Warehouse work</option>
+              <option>Cookery</option>
+              <option>Hairdressing</option>
+              <option>Banking</option>
+              <option>Economy</option>
+              <option>Mechanic</option>
+              <option>Media and Communication</option>
+            </select>
+  
+          </div>
+          <button class="btn-search" type="submit">Search</button>
+        </form>
+      </div>
+    </section>
+
+    <!-- Featured opportunities Section -->
+    <section id="featured-section" class="featured-opportunity">
+      <div class="container">
+        <h2>Featured Opportunities</h2>
+        <div class="opportunities-grid">
+          <div class="opportunity-item">
+          <h3>Bartender at Vatra</h3>
+          <p>Catering
+          Sarajevo
+        </p>
+          <a href="#" class="view-opportunity-btn">
+            View Job
+          </a>
+        </div>
+
+        <div class="opportunity-item">
+          <h3>Bartender at Vatra</h3>
+          <p>Catering
+          Sarajevo
+        </p>
+          <a href="#" class="view-opportunity-btn">
+            View Job
+          </a>
+        </div>
+      
+        </div>
+      </div>
+    </section>
+
+      </div>
+    </section>
+
+  </div>
+  
+
+ 
+
+</body>
+
+</html>

@@ -1,0 +1,23 @@
+{
+  "name": "software-engineering-project-frontend",
+  "version": "1.0.0",
+  "description": "This is the frontend project for Software Engineering class Job-Career Platform.",
+  "main": "index.js",
+  "scripts": {
+    "start": "vite",
+    "build": "vite build"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/DrErvin/Software-Engineering-Project-Frontend.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/DrErvin/Software-Engineering-Project-Frontend/issues"
+  },
+  "homepage": "https://github.com/DrErvin/Software-Engineering-Project-Frontend#readme",
+  "devDependencies": {
+    "vite": "^6.2.3"
+  }
+}
