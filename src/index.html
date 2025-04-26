@@ -79,6 +79,7 @@
               <option>Economy</option>
               <option>Mechanic</option>
               <option>Media and Communication</option>
+              <option>Sales</option>
             </select>
   
           </div>
@@ -177,6 +178,7 @@
           <option value="Mechanic">Mechanic</option>
           <option value="Warehouse Work">Warehouse Work</option>
           <option value="Media and Communication">Media and Communication</option>
+          <option value="Sales">Sales</option>
         </select>
       </div>
 
@@ -191,6 +193,61 @@
       <p>&copy; 2025 Job-Career Platform. All rights reserved.</p>
       
     </div>
+  </footer>
+
+
+  <!-- Publishing Jobs -->
+  <div class="overlay overlay--publish hidden-oppacity"></div>
+  <div class="publish-opportunity-window hidden-oppacity">
+    <button class="btn--close-modal upload-btn--close-modal">&times;</button>
+    <form class="upload">
+      <div class="upload__column">
+        <h3 class="upload__heading">Job Details</h3>
+        <label>Type of Job</label>
+        <select required name="type">
+          <option value="" disabled selected>Select Type</option>
+          <option>Job Offer</option>
+          <option>Internship</option>
+          <option>Part-Time</option>
+          <option>Hybrid</option>
+          <option>Remote</option>
+        </select>
+        <label>Field of </label>
+        <select required name="fieldOfStudy">
+          <option value="" disabled selected>Select Field of Study</option>
+          <option>Banking</option>
+          <option>Software Engineering</option>
+          <option>Catering</option>
+          <option>Economics</option>
+          <option>Hairdressing</option>
+          <option>Warehouse Work</option>
+          <option>Mechanic</option>
+          <option>Sales</option>
+          <option>Media and Communication</option>
+        </select>
+        <label>Title</label>
+        <input value="TEST23" required name="title" type="text" placeholder="E.g., Banker" />
+        <label>Location</label>
+        <input value="TEST23" required name="location" type="text" placeholder="E.g., Sarajevo" />
+        <label>Job Description</label>
+        <textarea required name="description" placeholder="Add a brief description...">TEST23</textarea>
+        <label>Qualifications & Requirements</label>
+        <textarea required name="qualificationsAndRequirements"
+          placeholder="Semicolon-separated qualifications">TEST23</textarea>
+        <label>Benefits</label>
+        <textarea required name="benefits" placeholder="Semicolon-separated benefits">TEST23</textarea>
+      </div>
+
+      
+
+      <button class="btn upload__btn" type="submit">
+        <svg>
+          <use href="img/icons.svg#icon-upload-cloud"></use>
+        </svg>
+        <span>Publish Job</span>
+      </button>
+    </form>
+  </div>
  
 
 </body>
