@@ -41,7 +41,7 @@ const createOpportunityObject = function (data) {
 const createUserObject = function (account) {
   return {
     id: account.id,
-    accountType: account.id.startsWith('s-') ? 'employee' : 'Company',
+    accountType: account.id.startsWith('e-') ? 'employee' : 'Company',
     // id: user.id,
     // nameAndSurname: user.name_and_surname || '',
     // email: user.email || '',
