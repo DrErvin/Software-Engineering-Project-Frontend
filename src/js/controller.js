@@ -20,3 +20,49 @@ const controlFeaturedOpportunities = async function () {
     console.error(err);
   }
 };
+
+//console.log(RES_PER_PAGE);
+
+const controlOpportunities = async function () {
+  try {
+    const id = window.location.hash.slice(1);
+
+    if (!id) return;
+
+    // Ignore scrolling sections
+    if (id === 'featured-section' || id === 'newsletter-section') {
+      document.querySelector(`#${id}`)?.scrollIntoView({ behavior: 'smooth' });
+      return;
+    }
+
+    // 0) Scroll the viewport to the top and render the loading spinner
+    opportunitiesView.scrollUp();
+    opportunitiesView.renderSpinner();
+
+    // 1) Toggle sections visibility
+    opportunitiesView.toggleSections();
+
+    // 0) Update results view to mark selected search result
+    // resultsView.update(model.getSearchResultsPage());
+
+    // 1) Updating bookmarks view
+    // bookmarksView.update(model.state.bookmarks);
+
+    // 2) Loading recipe
+    await model.loadOpportunity(id);
+
+    // 3) Attach isLoggedIn function to the markup method
+    opportunitiesView.addHandlerPermission(model.isLoggedIn);
+
+    // 4) Rendering opportunity
+    opportunitiesView.render(model.state.opportunity);
+
+    // 5) Attach event listeners for Apply Now buttons
+    applyView.addHandlerShowWindow(model.isLoggedIn);
+
+    opportunitiesView.addHandlerDownloadPDF(controlDownloadPDF);
+  } catch (err) {
+    console.error(err);
+    opportunitiesView.renderError();
+  }
+};
