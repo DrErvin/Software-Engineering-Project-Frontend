@@ -37,3 +37,17 @@ const createOpportunityObject = function (data) {
     contactPersonEmail: opportunity.contactPersonEmail || 'Not provided',
   };
 };
+
+const createUserObject = function (account) {
+  return {
+    id: account.id,
+    accountType: account.id.startsWith('s-') ? 'employee' : 'Company',
+    // id: user.id,
+    // nameAndSurname: user.name_and_surname || '',
+    // email: user.email || '',
+    // password: user.password || '', // Avoid using plaintext passwords; ensure they're hashed in a real application
+    // accountType: user.account_type || '',
+    // companyName: user.company_name || '',
+    // companyLocation: user.company_location || '',
+  };
+};
