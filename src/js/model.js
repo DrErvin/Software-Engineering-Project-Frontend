@@ -81,3 +81,58 @@ export const loadOpportunity = async function (id) {
     throw err;
   }
 };
+
+export const loadSearchResults = async function (query) {
+  try {
+    // Save the query in the global state
+    state.search.query = query;
+
+    // Fetch the JSON data from the local file
+    const data = await AJAX(`${API_URL}/opportunities`);
+    // If was a real API, we would use something like this
+    //  const data = await AJAX(`${API_URL}?${queryString}`);
+    console.log('Check for data in loadSearchResults', data);
+
+    // Filter the data based on the query parameters
+    const { location, titleOrKeyword, fieldOfStudy, type } = query;
+    const matchedResults = data.filter((opportunity) => {
+      return (
+        (!location ||
+          opportunity.location
+            .toLowerCase()
+            .includes(location.toLowerCase())) &&
+        (!titleOrKeyword ||
+          opportunity.title
+            .toLowerCase()
+            .includes(titleOrKeyword.toLowerCase()) ||
+          opportunity.tags.some((tag) =>
+            tag.toLowerCase().includes(titleOrKeyword.toLowerCase())
+          )) &&
+        (!fieldOfStudy ||
+          (opportunity.fieldOfStudy &&
+            opportunity.fieldOfStudy
+              .toLowerCase()
+              .includes(fieldOfStudy.toLowerCase()))) &&
+        (!type || opportunity.type.toLowerCase().includes(type.toLowerCase()))
+      );
+    });
+
+    // Map the filtered results to include only the required fields
+    state.search.results = matchedResults.map((opportunity) => ({
+      id: opportunity.id,
+      type: opportunity.type,
+      location: opportunity.location,
+      title: opportunity.title,
+      experience: opportunity.experienceRequired,
+      deadline: calculateRemainingDays(opportunity.endingDate),
+    }));
+
+    // Reset the current page to the first page
+    state.search.page = 1;
+
+    console.log(state.search.results); // Debug: Check processed search results
+  } catch (err) {
+    console.error(`${err} 💥`);
+    throw err;
+  }
+};
