@@ -1,35 +1,43 @@
 <!DOCTYPE html>
 <html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Job-Career Platform</title>
+    <link rel="stylesheet" href="css/main.css" />
 
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-  <title>Job-Career Platform</title>
-  <link rel="stylesheet" href="css/main.css" />
+    <script type="module" src="js/controller.js"></script>
+  </head>
 
-</head>
-
-<body>
-  <!-- Header Section -->
-  <header class="main-header">
-    <nav class="nav">
-      <img src="img/logo.jpg" alt="Job-Career logo" class="nav__logo" id="logo" />
-      <ul class="nav__links">
-        <li class="nav__item">
-          <!-- <button data-section-to-show="home" class="nav__link">Home</button> -->
-          <a class="nav__link" id="homeBtn" href="index.html">Home</a>
-        </li>
-        <li class="nav__item">
-          <a class="nav__link" href="#featured-section">Featured</a>
-        </li>
-        <li class="nav__item">
-          <a class="nav__link" href="#newsletter-section">Newsletter</a>
-        </li>
-        <!-- <li class="nav__item">
+  <body>
+    <!-- Header Section -->
+    <header class="main-header">
+      <nav class="nav">
+        <img
+          src="img/logo.jpg"
+          alt="Job-Career logo"
+          class="nav__logo"
+          id="logo"
+        />
+        <ul class="nav__links">
+          <li class="nav__item">
+            <!-- <button data-section-to-show="home" class="nav__link">Home</button> -->
+            <a class="nav__link" id="homeBtn" href="index.html">Home</a>
+          </li>
+          <li class="nav__item">
+            <a class="nav__link" id="admin-btn" href="#">Admin Dashboard</a>
+          </li>
+          <li class="nav__item">
+            <a class="nav__link" href="#featured-section">Featured</a>
+          </li>
+          <li class="nav__item">
+            <a class="nav__link" href="#newsletter-section">Newsletter</a>
+          </li>
+          <!-- <li class="nav__item">
           <a class="nav__link" href="#">Meetups</a>
         </li> -->
-        <!-- <li class="nav__item">
+          <!-- <li class="nav__item">
             <a class="nav__link nav__link--btn btn--show-modal" href="#"
               >Post a Listing</a
             >
@@ -39,268 +47,351 @@
               >Log In/Sign Up</a
             >
           </li> -->
-      </ul>
-      <!-- Buttons (Post a Listing and Log In/Sign Up) -->
-      <div class="nav__buttons">
-        <button class="nav__button" id="publishOpportunities">Publish Jobs</button>
-        <button class="nav__button" id="logInSignUp">Log In/Sign Up</button>
-      </div>
-    </nav>
-  </header>
+        </ul>
+        <!-- Buttons (Post a Listing and Log In/Sign Up) -->
+        <div class="nav__buttons">
+          <button class="nav__button" id="publishOpportunities">
+            Publish Jobs
+          </button>
+          <button class="nav__button" id="logInSignUp">Log In/Sign Up</button>
+        </div>
+      </nav>
+    </header>
 
-  <!-- Search and Featured opportunities Sections -->
-  <div id="main-content" class="">
-    <!-- Main Content with Search Form and Intro Text -->
-    <section class="intro-section">
-      <div class="container">
-        <h1 class="intro-title">Find your dream Job</h1>
-        <p class="intro-text">
-          Search from thousands of jobs in multiple sectors and
-          locations.
-        </p>
-      </div>
-    </section>
+    <!-- Search and Featured opportunities Sections -->
+    <div id="main-content" class="">
+      <!-- Main Content with Search Form and Intro Text -->
+      <section class="intro-section">
+        <div class="container">
+          <h1 class="intro-title">Find your dream Job</h1>
+          <p class="intro-text">
+            Search from thousands of jobs in multiple sectors and locations.
+          </p>
+        </div>
+      </section>
 
-    <!-- Search Form Section -->
-    <section class="search-section">
-      <div class="container search-container">
-        <form class="search-form">
-          <div class="search-inputs">
-            <input type="text" placeholder="Location" />
-            <input type="text" placeholder="Title or Keyword" />
-            <select name="field-of-study" class="dropdown" id="field-of-study">
-              <option value="" disabled selected>Select Field of Work</option>
-              <option>Catering</option>
-              <option>Software Engineering</option>
-              <option>Warehouse Work</option>
-              <option>Culinary</option>
-              <option>Hairdressing</option>
-              <option>Banking</option>
-              <option>Economy</option>
-              <option>Mechanic</option>
-              <option>Media and Communication</option>
-              <option>Sales</option>
-            </select>
-  
+      <!-- Search Form Section -->
+      <section class="search-section">
+        <div class="container search-container">
+          <form class="search-form">
+            <div class="search-inputs">
+              <input type="text" placeholder="Location" />
+              <input type="text" placeholder="Title or Keyword" />
+              <select
+                name="field-of-study"
+                class="dropdown"
+                id="field-of-study"
+              >
+                <option value="" disabled selected>Select Field of Work</option>
+                <option>Catering</option>
+                <option>Software Engineering</option>
+                <option>Warehouse Work</option>
+                <option>Culinary</option>
+                <option>Hairdressing</option>
+                <option>Banking</option>
+                <option>Economy</option>
+                <option>Mechanic</option>
+                <option>Media and Communication</option>
+                <option>Sales</option>
+              </select>
+            </div>
+            <button class="btn-search" type="submit">Search</button>
+          </form>
+        </div>
+      </section>
+
+      <!-- Featured opportunities Section -->
+      <section id="featured-section" class="featured-opportunity">
+        <div class="container">
+          <h2>Featured Opportunities</h2>
+          <div class="opportunities-grid"></div>
+        </div>
+      </section>
+
+      <!-- Opportunities List Section -->
+      <section class="opportunities-list hidden">
+        <div class="container">
+          <h2>Available Opportunities</h2>
+
+          <div class="container-opp-list">
+            <!-- <div class="opportunity-card">
+            <img src="src/img/logo2.jpg" alt="Telekom logo" class="card-logo" />
+            <div class="card-info">
+              <h3 class="card-type">Job Offer</h3>
+              <h2 class="card-title">Frontend Developer</h2>
+            </div>
+            <div class="card-details">
+              <div class="card-detail-item">
+                <div class="card-detail-label">
+                  <svg class="card-icon">
+                    <use href="src/img/icons.svg#icon-location-marker"></use>
+                  </svg>
+                  <span>Location</span>
+                </div>
+                <p>Sarajevo, Mostar</p>
+              </div>
+              <div class="card-detail-item">
+                <div class="card-detail-label">
+                  <svg class="card-icon">
+                    <use href="src/img/icons.svg#icon-experience"></use>
+                  </svg>
+                  <span>Experience</span>
+                </div>
+                <p>Senior</p>
+              </div>
+              <div class="card-detail-item last-item">
+                <div class="card-detail-label">
+                  <svg class="card-icon">
+                    <use href="src/img/icons.svg#icon-deadline"></use>
+                  </svg>
+                  <span>Deadline</span>
+                </div>
+                <p>28 days left</p>
+              </div>
+            </div>
+            <a href="#" class="card-link">
+              <button class="card-btn">View Opportunity</button>
+            </a>
+          </div> -->
           </div>
-          <button class="btn-search" type="submit">Search</button>
-        </form>
-      </div>
-    </section>
 
-    <!-- Featured opportunities Section -->
-    <section id="featured-section" class="featured-opportunity">
-      <div class="container">
-        <h2>Featured Opportunities</h2>
-        <div class="opportunities-grid">
-          <div class="opportunity-item">
-          <h3>Warehouse Assistant at QuickMove</h3>
-          <p>Warehouse work<br>Mostar</p>
-          <a href="#" class="view-opportunity-btn">View Job</a>
+          <div class="pagination">
+            <!-- <button class="pagination-btn pagination__btn--prev">
+            <svg class="pagination-icon">
+              <use href="src/img/icons.svg#icon-arrow-left"></use>
+            </svg>
+            <span>Page 1</span>
+          </button>
+          <button class="pagination-btn pagination__btn--next">
+            <svg class="pagination-icon">
+              <use href="src/img/icons.svg#icon-arrow-right"></use>
+            </svg>
+            <span>Page 3</span>
+          </button> -->
+          </div>
         </div>
-
-        <div class="opportunity-item">
-          <h3>Junior Cook at Bistro Nova</h3>
-          <p>Cookery<br>Tuzla</p>
-          <a href="#" class="view-opportunity-btn">View Job</a>
-        </div>
-
-        <div class="opportunity-item">
-          <h3>Hairdresser at Style Studio</h3>
-          <p>Hairdressing<br>Banja Luka</p>
-          <a href="#" class="view-opportunity-btn">View Job</a>
-        </div>
-
-        <div class="opportunity-item">
-          <h3>Bank Teller at UniBank</h3>
-          <p>Banking<br>Sarajevo</p>
-          <a href="#" class="view-opportunity-btn">View Job</a>
-        </div>
-
-        <div class="opportunity-item">
-          <h3>Economist at FinConsult</h3>
-          <p>Economy<br>Zenica</p>
-          <a href="#" class="view-opportunity-btn">View Job</a>
-        </div>
-
-        <div class="opportunity-item">
-          <h3>Bartender at Vatra</h3>
-          <p>Catering,
-          Sarajevo
-        </p>
-          <a href="#" class="view-opportunity-btn">
-            View Job
-          </a>
-        </div>
-
-        <div class="opportunity-item">
-          <h3>Accountant</h3>
-          <p>Economics, Split
-        </p>
-          <a href="#" class="view-opportunity-btn">
-            View Job
-          </a>
-        </div>
-
-        <div class="opportunity-item">
-          <h3>Journalist</h3>
-          <p>Media and Communication,
-          Belgrade
-        </p>
-          <a href="#" class="view-opportunity-btn">
-            View Job
-          </a>
-        </div>
-
-        <div class="opportunity-item">
-          <h3>Head Chef</h3>
-          <p>Culinary,
-          Mostar
-        </p>
-          <a href="#" class="view-opportunity-btn">
-            View Job
-          </a>
-        </div>
-
-        <div class="opportunity-item">
-          <h3>Car Service</h3>
-          <p>Mechanic,
-          Tuzla
-        </p>
-          <a href="#" class="view-opportunity-btn">
-            View Job
-          </a>
-        </div>
-
-        <div class="opportunity-item">
-          <h3>Media Assistant at City Media</h3>
-          <p>Media and Communication<br>Trebinje</p>
-          <a href="#" class="view-opportunity-btn">View Job</a>
-        </div>
-        </div>
-      </div>
-    </section>
-
-      </div>
-    </section>
-
-  </div>
-
-  <!-- Newsletter Subscription Section-->
-   <section id="newsletter-section" class="newsletter">
-    <h2>Top Job Opportunities in Your Inbox</h2>
-    <p>Subscribe to the Job-Career Portal newsletter, 
-      and we will send you the latest opportunities in your selected category once a week</p> 
-    <form action="#">
-      <div class="select-field">
-        <select name="field-of-interest" required>
-          <option value="" disabled selected>Choose a field...</option>
-          <option value="Banking">Banking</option>
-          <option value="Software Engineering">Software Engineering</option>
-          <option value="Catering">Catering</option>
-          <option value="Economics">Economics</option>
-          <option value="Hairdressing">Hairdressing</option>
-          <option value="Mechanic">Mechanic</option>
-          <option value="Warehouse Work">Warehouse Work</option>
-          <option value="Media and Communication">Media and Communication</option>
-          <option value="Sales">Sales</option>
-        </select>
-      </div>
-
-      <input type="email" placeholder="Your email address..." required />
-      <button type="submit">Subscribe</button>
-    </form>
-  </section>
-    
-  <!-- Footer Section -->
-   <footer class="main-footer">
-    <div class="container">
-      <p>&copy; 2025 Job-Career Platform. All rights reserved.</p>
-      
+      </section>
     </div>
-  </footer>
 
+    <!-- Opportunity Details Section (initially hidden) style="display: none;" -->
+    <div id="details-content" class="">
+      <!-- Main Details Section -->
+      <section class="details-opportunity hidden">
+        <!--<div class="container details-container">
+        <div class="details-header">
+          <img src="src/img/logo.jpg" alt="Company Logo" class="company-logo" />
+          <h1 class="opportunity-title">Operations Manager</h1>
+          <p class="opportunity-type">Adriatic Valley Digital Holding</p>
+          <p class="opportunity-location">
+            <svg class="icon-opport-header">
+              <use href="src/img/icons.svg#icon-location-marker"></use>
+            </svg>
+            Banja Luka
+          </p>
+          <p class="opportunity-tags"><a href="#">SCRUM</a> <a href="#">Sales</a></p>
+        </div>
 
-  <!-- Publishing Jobs -->
-  <div class="overlay overlay--publish hidden-oppacity"></div>
-  <div class="publish-opportunity-window hidden-oppacity">
-    <button class="btn--close-modal upload-btn--close-modal">&times;</button>
-    <form class="upload">
-      <div class="upload__column">
-        <h3 class="upload__heading">Job Details</h3>
-        <label>Type of Job</label>
-        <select required name="type">
-          <option value="" disabled selected>Select Type</option>
-          <option>Job Offer</option>
-          <option>Internship</option>
-          <option>Part-Time</option>
-          <option>Hybrid</option>
-          <option>Remote</option>
-        </select>
-        <label>Field of </label>
-        <select required name="fieldOfStudy">
-          <option value="" disabled selected>Select Field of Study</option>
-          <option>Banking</option>
-          <option>Software Engineering</option>
-          <option>Catering</option>
-          <option>Economics</option>
-          <option>Hairdressing</option>
-          <option>Warehouse Work</option>
-          <option>Mechanic</option>
-          <option>Sales</option>
-          <option>Media and Communication</option>
-        </select>
-        <label>Title</label>
-        <input value="TEST23" required name="title" type="text" placeholder="E.g., Banker" />
-        <label>Location</label>
-        <input value="TEST23" required name="location" type="text" placeholder="E.g., Sarajevo" />
-        <label>Job Description</label>
-        <textarea required name="description" placeholder="Add a brief description...">TEST23</textarea>
-        <label>Qualifications & Requirements</label>
-        <textarea required name="qualificationsAndRequirements"
-          placeholder="Semicolon-separated qualifications">TEST23</textarea>
-        <label>Benefits</label>
-        <textarea required name="benefits" placeholder="Semicolon-separated benefits">TEST23</textarea>
+        <div class="opportunity-info">
+          <div class="opportunity-experience">
+            <svg class="icon-opport-header">
+              <use href="src/img/icons.svg#icon-experience"></use>
+            </svg>
+            <p><strong>Experience:</strong> Senior</p>
+          </div>
+          <div class="opportunity-engagement">
+            <svg class="icon-opport-header">
+              <use href="src/img/icons.svg#icon-engagement"></use>
+            </svg>
+            <p><strong>Engagement:</strong> Full-time</p>
+          </div>
+          <div class="opportunity-deadline">
+            <svg class="icon-opport-header">
+              <use href="src/img/icons.svg#icon-deadline"></use>
+            </svg>
+            <p><strong>Deadline:</strong> 15 days left</p>
+          </div>
+        </div>
+
+        <div class="apply-button">
+          <a href="#" class="apply-now-btn">Apply Now</a>
+        </div>
+
+        <div class="opportunity-section">
+          <h2>Your Tasks (Job Description)</h2>
+          <p>As an Operations Manager, you will oversee daily operations...</p>
+        </div>
+
+        <div class="opportunity-section">
+          <h2>Your Profile (Qualifications & Requirements)</h2>
+          <ul>
+            <li>Minimum 5 years of experience in operations management</li>
+            <li>Strong leadership and communication skills</li>
+            <li>Proven experience with SCRUM and agile methodologies</li>
+          </ul>
+        </div>
+
+        <div class="opportunity-section">
+          <h2>What We Offer</h2>
+          <ul>
+            <li>Competitive salary and performance bonuses</li>
+            <li>Health and wellness benefits</li>
+            <li>Opportunity for professional growth and development</li>
+          </ul>
+        </div>
+
+        <div class="opportunity-section">
+          <h2>About the Company</h2>
+          <p>
+            Adriatic Valley Digital Holding is dedicated to fostering the
+            development of the tech community in the Adriatic region, helping
+            companies implement sustainable tech solutions...
+          </p>
+        </div>
+
+        <div class="contact-person-section">
+          <h2>Contact Person</h2>
+          <div class="contact-person-details">
+            <img src="src/img/LoveMagenta.jpeg" alt="Contact Person" class="contact-person-image" />
+            <div class="contact-person-info">
+              <p><strong>Name:</strong> Jane Doe</p>
+              <p><strong>Email:</strong> <a href="mailto:jane.doe@telekom.com">jane.doe@telekom.com</a></p>
+            </div>
+          </div>
+        </div>
+
+        <div class="apply-button">
+          <a href="#" class="apply-now-btn">Apply Now</a>
+        </div>-->
+      </section>
+    </div>
+
+    <div id="admin-content">
+      <!-- <section class="admin-section hidden">
+  
+        <h1>Admin Dashboard</h1>
+        <form class="admin-search-form">
+          <div class="admin-search-inputs">
+            <input type="text" placeholder="Search applications..." name="search" required />
+            <button type="submit" class="btn-admin-search">Search</button>
+          </div>
+        </form>
+  
+      </section> -->
+
+      <section class="admin-header hidden">
+        <div class="container">
+          <h2 class="header-title">Admin Dashboard</h2>
+          <p class="header-text">
+            Use smart search functionality to enhance your data
+          </p>
+        </div>
+      </section>
+
+      <!-- Statistical Data Section -->
+      <section class="admin-statistics hidden">
+        <div class="statistics-container">
+          <div class="statistics-card">
+            <h3>Total Applications</h3>
+            <p id="applications-count">0</p>
+          </div>
+          <div class="statistics-card">
+            <h3>Active Listings</h3>
+            <p id="opportunities-count">0</p>
+          </div>
+          <div class="statistics-card pie-chart">
+            <h3>Application Distribution by Country</h3>
+            <canvas id="pieChart"></canvas>
+          </div>
+        </div>
+      </section>
+
+      <!-- Smart Search Form -->
+      <section class="smart-search hidden">
+        <h3 class="form-heading">Smart Search</h3>
+        <form class="admin-search-form">
+          <div class="admin-search-inputs">
+            <input
+              type="text"
+              placeholder="Try Applications from Berlin..."
+              name="search"
+              required
+            />
+            <button type="submit" class="btn-admin-search">Search</button>
+          </div>
+        </form>
+      </section>
+
+      <!-- Dynamic Search Results -->
+      <section class="admin-search-results hidden">
+        <h2>Search Results</h2>
+        <div class="admin-result-cards">
+          <!-- Cards will be dynamically loaded here -->
+          <!-- <div class="admin-card">
+            <div class="admin-card-content">
+              <h3 class="admin-card-title">Frontend Developer</h3>
+              <p class="admin-card-subtitle">Applicant: John Doe <span
+                  class="admin-applicant-email">(john.doe@example.com)</span></p>
+              <div class="admin-card-details">
+                <p><strong>Application ID:</strong> 12345</p>
+                <p><strong>Opportunity Location:</strong> Berlin</p>
+                <p><strong>Applicant Country:</strong> Germany (California State University)</p>
+                <p><strong>Submitted:</strong> 2025-01-10</p>
+              </div>
+            </div>
+          </div>
+  
+          <div class="admin-card">
+            <div class="admin-card-content">
+              <h3 class="admin-card-title">Backend Developer</h3>
+              <p class="admin-card-subtitle">Applicant: Jane Smith <span
+                  class="admin-applicant-email">(jane.smith@example.com)</span></p>
+              <div class="admin-card-details">
+                <p><strong>Application ID:</strong> 67890</p>
+                <p><strong>Opportunity Location:</strong> Sarajevo</p>
+                <p><strong>Applicant Country:</strong> BiH (International University of Sarajevo)</p>
+                <p><strong>Submitted:</strong> 2025-01-12</p>
+              </div>
+            </div>
+          </div> -->
+        </div>
+      </section>
+    </div>
+
+    <!-- Newsletter Subscription Section-->
+    <section id="newsletter-section" class="newsletter">
+      <h2>Top Job Opportunities in Your Inbox</h2>
+      <p>
+        Subscribe to the Job-Career Portal newsletter, and we will send you the
+        latest opportunities in your selected category once a week
+      </p>
+      <form action="#">
+        <div class="select-field">
+          <select name="field-of-interest" required>
+            <option value="" disabled selected>Choose a field...</option>
+            <option value="Banking">Banking</option>
+            <option value="Software Engineering">Software Engineering</option>
+            <option value="Catering">Catering</option>
+            <option value="Economics">Economics</option>
+            <option value="Hairdressing">Hairdressing</option>
+            <option value="Mechanic">Mechanic</option>
+            <option value="Warehouse Work">Warehouse Work</option>
+            <option value="Media and Communication">
+              Media and Communication
+            </option>
+            <option value="Sales">Sales</option>
+          </select>
+        </div>
+
+        <input type="email" placeholder="Your email address..." required />
+        <button type="submit">Subscribe</button>
+      </form>
+    </section>
+
+    <!-- Footer Section -->
+    <footer class="main-footer">
+      <div class="container">
+        <p>&copy; 2025 Job-Career Platform. All rights reserved.</p>
       </div>
-
-      
-
-      <button class="btn upload__btn" type="submit">
-        <svg>
-          <use href="img/icons.svg#icon-upload-cloud"></use>
-        </svg>
-        <span>Publish Job</span>
-      </button>
-    </form>
-  </div>
-   <!-- Newsletter Subscription Section -->
-  <section id="newsletter-section" class="newsletter">
-    <h2>Top Job-Career opportunities in your inbox</h2>
-    <p>
-      Subscribe to the Job-Career Portal newsletter, and we'll send you the latest
-      opportunities in your selected category once a week.
-    </p>
-    <form action="#">
-      <div class="select-field">
-        <select name="field-of-interest" required>
-          <option value="" disabled selected>Choose a field...</option>
-          <option value="Catering">Catering</option>
-          <option value="Warehouse work">Warehouse work</option>
-          <option value="Cookery">Cookery</option>
-          <option value="Hairdressing">Hairdressing</option>
-          <option value="Banking">Banking</option>
-          <option value="Economy">Economy</option>
-          <option value="Mechanic">Mechanic</option>
-          <option value="Media and Communication">Media and Communication</option>
-        </select>
-      </div>
-
-      <input type="email" placeholder="Your email address..." required />
-      <button type="submit">Subscribe</button>
-    </form>
-  </section>
- 
-
-</body>
-
+    </footer>
+  </body>
 </html>
