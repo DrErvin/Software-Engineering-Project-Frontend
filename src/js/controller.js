@@ -66,3 +66,39 @@ const controlOpportunities = async function () {
     opportunitiesView.renderError();
   }
 };
+
+// A handler function to process the search query
+const controlSearchResults = async function () {
+  try {
+    // 0) Scroll the viewport to the top and render the loading spinner
+    resultsView.scrollUp();
+    resultsView.renderSpinner();
+
+    // 1) Toggle sections visibility
+    resultsView.toggleSections();
+
+    // 2) Get search query
+    const query = SearchView.getQuery();
+
+    // Guard clause: Do nothing if all query fields are empty
+    // const isEmpty = Object.values(query).every((value) => value === '');
+    // if (isEmpty || !query) return;
+    if (!query) return;
+    console.log(query);
+
+    // 3) Render intro-section with query data
+    introView.render(query);
+
+    // 4) Load search results
+    await model.loadSearchResults(query);
+
+    // 5) Render results
+    resultsView.render(model.getSearchResultsPage());
+
+    // 6) Render initial pagination buttons
+    paginationView.render(model.state.search);
+  } catch (err) {
+    console.error(err);
+    resultsView.renderError();
+  }
+};
