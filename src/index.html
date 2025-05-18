@@ -393,5 +393,312 @@
         <p>&copy; 2025 Job-Career Platform. All rights reserved.</p>
       </div>
     </footer>
+
+    <div class="overlay overlay--publish hidden-oppacity"></div>
+    <div class="publish-opportunity-window hidden-oppacity">
+      <button class="btn--close-modal upload-btn--close-modal">&times;</button>
+      <form class="upload">
+        <div class="upload__column">
+          <h3 class="upload__heading">Opportunity Details</h3>
+          <!-- <label>Type</label>
+          <select required name="type">
+            <option value="" disabled selected>Select Type</option>
+            <option>Job Offer</option>
+            <option>Internship</option>
+            <option>Thesis Topic</option>
+            <option>Mentorship</option>
+            <option>Extra Curriculum Project</option>
+          </select> -->
+          <label>Field of Work</label>
+          <select required name="fieldOfWork">
+            <!-- name="fieldOfStudy" -->
+            <option value="" disabled selected>Select Field of Work</option>
+            <option>Catering</option>
+            <option>Software Engineering</option>
+            <option>Warehouse Work</option>
+            <option>Culinary</option>
+            <option>Hairdressing</option>
+            <option>Banking</option>
+            <option>Economy</option>
+            <option>Mechanic</option>
+            <option>Media and Communication</option>
+            <option>Sales</option>
+          </select>
+          <label>Title</label>
+          <input
+            value="TEST23"
+            required
+            name="title"
+            type="text"
+            placeholder="E.g., Software Engineer"
+          />
+          <label>Location</label>
+          <input
+            value="TEST23"
+            required
+            name="location"
+            type="text"
+            placeholder="E.g., Sarajevo"
+          />
+          <label>Job Description</label>
+          <textarea
+            required
+            name="description"
+            placeholder="Add a brief description..."
+          >
+TEST23</textarea
+          >
+          <label>Qualifications & Requirements</label>
+          <textarea
+            required
+            name="qualificationsAndRequirements"
+            placeholder="Semicolon-separated qualifications"
+          >
+TEST23</textarea
+          >
+          <label>Benefits</label>
+          <textarea
+            required
+            name="benefits"
+            placeholder="Semicolon-separated benefits"
+          >
+TEST23</textarea
+          >
+        </div>
+
+        <div class="upload__column">
+          <h3 class="upload__heading">Additional Details</h3>
+          <label>Tags</label>
+          <input
+            value="TEST23"
+            required
+            name="tags"
+            type="text"
+            placeholder="Comma-separated, e.g., Python,Java"
+          />
+          <label>Engagement Type</label>
+          <input
+            value="TEST23"
+            required
+            name="engagementType"
+            type="text"
+            placeholder="E.g., Full-time, Part-time"
+          />
+          <label>Work Arrangement</label>
+          <input
+            value="TEST23"
+            required
+            name="workArrangement"
+            type="text"
+            placeholder="E.g., Remote, On-site"
+          />
+          <label>Contact Person </label>
+          <input
+            value="TEST23"
+            required
+            name="contactPerson"
+            type="text"
+            placeholder="E.g., Jane Doe"
+          />
+          <label
+            >Contact Email
+            <span class="note"
+              >This email will be the recipient address for all
+              applications</span
+            ></label
+          >
+          <input
+            value="TEST23@gmail.com"
+            required
+            name="contactPersonEmail"
+            type="email"
+            placeholder="E.g., jane.doe@example.com"
+          />
+          <label>Experience Required</label>
+          <input
+            value="TEST23"
+            name="experienceRequired"
+            type="text"
+            placeholder="Comma-separated, e.g., 3+ Years, Senior"
+          />
+          <label>Deadline</label>
+          <input required name="endingDate" type="date" />
+        </div>
+
+        <button class="btn upload__btn" type="submit">
+          <svg>
+            <use href="img/icons.svg#icon-upload-cloud"></use>
+          </svg>
+          <span>Publish Opportunity</span>
+        </button>
+      </form>
+    </div>
+
+    <div class="overlay overlay--login hidden-oppacity"></div>
+    <div class="login-form-window hidden-oppacity">
+      <button class="btn--close-modal login-btn--close-modal">&times;</button>
+      <form class="login-form">
+        <div class="login__column">
+          <h3 class="login__heading">Log In</h3>
+          <label for="loginEmail">Email</label>
+          <input
+            id="loginEmail"
+            required
+            type="email"
+            placeholder="Enter your email"
+          />
+
+          <label for="loginPassword">Password</label>
+          <input
+            id="loginPassword"
+            required
+            type="password"
+            placeholder="Enter your password"
+          />
+
+          <button class="login__btn" type="submit">
+            <svg>
+              <use href="img/icons.svg#icon-login"></use>
+            </svg>
+            <span>Log In</span>
+          </button>
+        </div>
+
+        <div class="login__footer">
+          <!-- <p>Don't have an account? <a href="#" id="signUpLink">Sign Up</a></p> -->
+          <p>
+            Don't have an account?
+            <button class="show__signup__btn" id="openSignUpForm" type="button">
+              Sign Up
+            </button>
+          </p>
+        </div>
+      </form>
+    </div>
+
+    <div class="overlay overlay--logout hidden-oppacity"></div>
+    <div class="logout-form-window hidden-oppacity">
+      <button class="btn--close-modal logout-btn--close-modal">&times;</button>
+      <form class="logout-form">
+        <div class="logout__column">
+          <h3 class="logout__heading">Log Out</h3>
+          <p class="logout__message">
+            You are currently logged in as
+            <span id="logoutUserName">Name Surname</span>. Do you want to log
+            out?
+          </p>
+          <button class="btn logout__btn" type="submit">
+            <svg>
+              <use href="img/icons.svg#icon-logout"></use>
+            </svg>
+            <span>Log Out</span>
+          </button>
+        </div>
+      </form>
+    </div>
+
+    <div class="overlay overlay--signup hidden-oppacity"></div>
+    <div class="signup-form-window hidden-oppacity">
+      <button class="btn--close-modal signup-btn--close-modal">&times;</button>
+
+      <!-- Sign-Up Form -->
+      <form class="signup-form">
+        <div class="signup__column">
+          <h3 class="signup__heading">Sign Up</h3>
+
+          <div class="disclaimer">
+            <p>
+              We use your data to enhance your user journey on our platform by
+              simplifying the application process.
+            </p>
+          </div>
+
+          <!-- <label for="user-type">User Type</label>
+        <select id="user-type" required>
+          <option value="" disabled selected>Select User Type</option>
+          <option>Student</option>
+          <option>Deutsche Telekom</option>
+        </select> -->
+
+          <label for="name">Name and Surname</label>
+          <input
+            id="name"
+            name="nameAndSurname"
+            required
+            type="text"
+            placeholder="Enter your name and surname"
+          />
+
+          <label for="signUpEmail"
+            >Email
+            <span class="note"
+              >please use your company email address</span
+            ></label
+          >
+          <input
+            id="signUpEmail"
+            name="email"
+            required
+            type="email"
+            placeholder="Enter your email"
+          />
+          <p class="signup__emailError hidden">
+            *Invalid email domain. Please use your company email.
+          </p>
+
+          <label for="signUpPassword">Password</label>
+          <input
+            id="signUpPassword"
+            name="password"
+            required
+            type="password"
+            placeholder="Enter your password"
+          />
+
+          <button class="btn signup__btn" type="submit">
+            <svg>
+              <use href="img/icons.svg#icon-signup"></use>
+            </svg>
+            <span>Sign Up</span>
+          </button>
+        </div>
+      </form>
+    </div>
+
+    <div class="overlay overlay--apply hidden-oppacity"></div>
+    <div class="apply-form-window hidden-oppacity">
+      <button class="btn--close-modal apply-btn--close-modal">&times;</button>
+      <form class="apply-form">
+        <div class="apply__column">
+          <h3 class="apply__heading">Apply Now</h3>
+
+          <div class="disclaimer">
+            <p>
+              Your information is auto-generated based on your email. After
+              applying, you will receive a confirmation email with your details.
+            </p>
+          </div>
+
+          <label for="cvUpload">Upload Your CV (optional)</label>
+          <input
+            id="cvUpload"
+            name="cvUpload"
+            type="file"
+            accept=".pdf, .doc, .docx"
+          />
+
+          <p class="apply__note">
+            *Only PDF, DOC, and DOCX files are accepted.
+          </p>
+
+          <button class="btn apply__btn" type="submit">
+            <svg>
+              <use href="img/icons.svg#icon-apply"></use>
+            </svg>
+            <span>Apply</span>
+          </button>
+        </div>
+      </form>
+    </div>
   </body>
 </html>
