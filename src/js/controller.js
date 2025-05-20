@@ -104,3 +104,13 @@ const controlSearchResults = async function () {
     resultsView.renderError();
   }
 };
+
+// A handler function to control pagination
+const controlPagination = function (goToPage) {
+  resultsView.scrollUp();
+  // 1) Render new results
+  resultsView.render(model.getSearchResultsPage(goToPage));
+
+  // 2) Render new pagination buttons
+  paginationView.render(model.state.search);
+};
