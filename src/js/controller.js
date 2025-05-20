@@ -5,6 +5,7 @@ import featuredView from './views/featuredView.js';
 import SearchView from './views/SearchView.js';
 import loginView from './views/loginView.js';
 import resultsView from './views/resultsView.js';
+import previewView from '/views/previewView.js';
 
 const controlFeaturedOpportunities = async function () {
   try {
