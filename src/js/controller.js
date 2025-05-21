@@ -115,3 +115,44 @@ const controlPagination = function (goToPage) {
   // 2) Render new pagination buttons
   paginationView.render(model.state.search);
 };
+
+const controlLogIn = async function () {
+  try {
+    // Get login data from the login form
+    const data = loginView.getLoginData();
+
+    // Verify login credentials using the model
+    const account = await model.verifyLogin(data);
+    if (!account) {
+      alert('Invalid email or password');
+      return;
+    }
+
+    // Log success and user details
+    console.log('Login successful:', model.state.user);
+
+    // Update the login button text
+    loginView.updateLoginButton(model.isLoggedIn());
+
+    // Update log out form with user name and surname
+    const userData = await model.getUserDetails();
+    logoutView.updateUserNameSurname(userData);
+
+    // Show success message
+    loginView.renderMessage();
+
+    // Restore the original form HTML after renderMesssage clears it
+    loginView.restoreOriginalHtml();
+
+    // Update the buttons in opportunitiesView after login
+    opportunitiesView.updateButtons(model.isLoggedIn);
+
+    // Close the login form
+    setTimeout(function () {
+      if (!loginView.isManuallyClosed()) loginView.toggleWindow();
+    }, MODAL_CLOSE_SEC * 1000);
+  } catch (err) {
+    console.error('💥', err);
+    loginView.renderError(err.message);
+  }
+};
