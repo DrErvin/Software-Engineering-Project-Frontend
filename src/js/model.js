@@ -145,3 +145,66 @@ export const getSearchResultsPage = function (page = state.search.page) {
 
   return state.search.results.slice(start, end);
 };
+
+export const uploadOpportunity = async function (newOpportunity) {
+  try {
+    // Process tags field into an array
+    const tags = newOpportunity.tags
+      ? newOpportunity.tags.split(',').map((tag) => tag.trim())
+      : [];
+
+    // Process experienceRequired field into an array
+    const experienceRequired = newOpportunity.experienceRequired
+      ? newOpportunity.experienceRequired.split(',').map((exp) => exp.trim())
+      : [];
+
+    // Process qualificationsAndRequirements into an array
+    const qualificationsAndRequirements =
+      newOpportunity.qualificationsAndRequirements
+        ? newOpportunity.qualificationsAndRequirements
+            .split(';')
+            .map((req) => req.trim())
+        : [];
+
+    // Process benefits into an array
+    const benefits = newOpportunity.benefits
+      ? newOpportunity.benefits.split(';').map((ben) => ben.trim())
+      : [];
+
+    // Create opportunity object
+    const opportunity = {
+      id: Date.now(), // Timestamp-based numeric ID
+      type: newOpportunity.type,
+      fieldOfStudy: newOpportunity.fieldOfStudy,
+      title: newOpportunity.title,
+      location: newOpportunity.location,
+      description: newOpportunity.description,
+      qualificationsAndRequirements, // Processed field
+      benefits, // Processed field
+      tags,
+      engagementType: newOpportunity.engagementType,
+      workArrangement: newOpportunity.workArrangement,
+      contactPerson: newOpportunity.contactPerson,
+      contactPersonEmail: newOpportunity.contactPersonEmail,
+      experienceRequired, // Processed field
+      endingDate: newOpportunity.endingDate,
+    };
+
+    // If real API was used we could now upload and get a response
+    // const data = await AJAX(`${API_URL}?key=${KEY}`, opportunity);
+    // state.opportunity = createOpportunityObject(data);
+
+    // Send data to server
+    const response = await AJAX(`${API_URL}/opportunities`, opportunity);
+    console.log('Server Response:', response);
+
+    // Add to global state
+    state.opportunity = createOpportunityObject([response.data]);
+    // state.opportunity = createOpportunityObject(data);
+
+    console.log('Opportunity Uploaded:', state.opportunity);
+  } catch (err) {
+    console.error('Error with uploading opportunity:', err);
+    throw err;
+  }
+};
