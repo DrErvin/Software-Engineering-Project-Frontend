@@ -198,3 +198,23 @@ const controlLogIn = async function () {
     loginView.renderError(err.message);
   }
 };
+
+const controlLogInState = async function () {
+  try {
+    // Load user from local storage
+    model.loadUserFromLocalStorage();
+
+    // If user is logged in, update UI
+    loginView.updateLoginButton(model.isLoggedIn());
+
+    // Update log out form with user name and surname
+    const userData = await model.getUserDetails();
+    logoutView.updateUserNameSurname(userData);
+
+    console.log('User restored from session:', model.state.user);
+  } catch (err) {
+    console.error('💥', err);
+    logoutView.renderError(err.message);
+    loginView.renderError(err.message);
+  }
+};
