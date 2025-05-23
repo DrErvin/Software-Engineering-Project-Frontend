@@ -116,6 +116,48 @@ const controlPagination = function (goToPage) {
   paginationView.render(model.state.search);
 };
 
+const controlPublishOpportunity = async function (newOpportunity) {
+  try {
+    // Show loading spinner
+    publishView.renderSpinner();
+
+    // Upload the new opportunity data
+    await model.uploadOpportunity(newOpportunity);
+    console.log(model.state.opportunity);
+
+    // Render opportunity
+    opportunitiesView.scrollUp();
+    opportunitiesView.toggleSections();
+    opportunitiesView.render(model.state.opportunity);
+
+    // Success message
+    publishView.renderMessage();
+
+    // Restore the original form HTML after renderMesssage clears it
+    publishView.restoreOriginalHtml();
+
+    // Render bookmark view
+    // bookmarksView.render(model.state.bookmarks);
+
+    // Change ID in URL
+    window.history.pushState(null, '', `#${model.state.opportunity.id}`);
+    // window.history.back() // Automatically goes back to last page
+
+    // Update the buttons in opportunitiesView after login
+    opportunitiesView.updateButtons(model.isLoggedIn);
+
+    opportunitiesView.addHandlerDownloadPDF(controlDownloadPDF);
+
+    // Close form window
+    setTimeout(function () {
+      if (!publishView.isManuallyClosed()) publishView.toggleWindow();
+    }, MODAL_CLOSE_SEC * 1000);
+  } catch (err) {
+    console.error('💥', err);
+    publishView.renderError(err.message);
+  }
+};
+
 const controlLogIn = async function () {
   try {
     // Get login data from the login form
