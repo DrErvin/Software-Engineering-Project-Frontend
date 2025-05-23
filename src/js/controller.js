@@ -218,3 +218,37 @@ const controlLogInState = async function () {
     loginView.renderError(err.message);
   }
 };
+
+const controlLogOut = async function () {
+  try {
+    // Clear global state
+    model.clearState();
+
+    // Clear local storage
+    model.clearLocalStorage();
+
+    // Reset signup form validation state
+    signupView.resetValidation();
+    signupView.addHandlerValidation(controlValidateEmail);
+
+    // Update the login/signup button text
+    loginView.updateLoginButton();
+
+    // Show success message
+    logoutView.renderMessage();
+
+    // Restore the original form HTML after renderMesssage clears it
+    logoutView.restoreOriginalHtml();
+
+    // Update the buttons in opportunitiesView after logout
+    opportunitiesView.updateButtons(model.isLoggedIn);
+
+    // Close the login form
+    setTimeout(function () {
+      if (!logoutView.isManuallyClosed()) logoutView.toggleWindow();
+    }, MODAL_CLOSE_SEC * 1000);
+  } catch (err) {
+    console.error('💥', err);
+    logoutView.renderError(err.message);
+  }
+};
