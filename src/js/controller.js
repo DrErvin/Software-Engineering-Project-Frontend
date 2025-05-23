@@ -3,10 +3,19 @@ import { MODAL_CLOSE_SEC } from './config.js';
 import * as model from './model.js';
 import featuredView from './views/featuredView.js';
 import SearchView from './views/SearchView.js';
-import loginView from './views/loginView.js';
 import resultsView from './views/resultsView.js';
-import previewView from '/views/previewView.js';
 import paginationView from './views/paginationView.js';
+// import introView from './views/introView.js';
+// import opportunitiesView from './views/opportunitiesView.js';
+// import publishView from './views/publishView.js';
+import loginView from './views/loginView.js';
+// import logoutView from './views/logoutView.js';
+// import signupView from './views/signupView.js';
+// import applyView from './views/applyView.js';
+// import PDFView from './views/PDFView.js';
+// import adminView from './views/adminView.js';
+// import SmartSearchView from './views/SmartSearchView.js';
+// import smartResultsView from './views/smartResultsView.js';
 
 const controlFeaturedOpportunities = async function () {
   try {
@@ -106,7 +115,6 @@ const controlSearchResults = async function () {
   }
 };
 
-// A handler function to control pagination
 const controlPagination = function (goToPage) {
   resultsView.scrollUp();
   // 1) Render new results
@@ -285,3 +293,138 @@ const controlSignup = async function (newAccount) {
     signupView.renderError(err.message);
   }
 };
+
+const controlSignupWindow = async function () {
+  try {
+    // Close the login form if it is open
+    if (!loginView.isManuallyClosed()) loginView.toggleWindow();
+
+    // Open the signup form
+    signupView.toggleWindow();
+
+    if (model.areUniversitiesCached()) return;
+
+    // Preload university domains
+    await model.preloadUniversityDomains();
+  } catch (err) {
+    console.error('💥', err);
+    signupView.renderError(err.message);
+  }
+};
+
+const controlValidateEmail = async function (email) {
+  try {
+    const isValid = await model.validateEmail(email);
+
+    return isValid; // Return validation status to be used in the view
+  } catch (err) {
+    console.error('💥', err);
+    signupView.renderError(err.message);
+  }
+};
+
+const controlApplication = async function (formData) {
+  try {
+    // Show loading spinner
+    applyView.renderSpinner();
+
+    // Append userId and opportunityId from the global state
+    formData.append('userId', model.state.user.id);
+    formData.append('opportunityId', model.state.opportunity.id);
+
+    // Prepare data for submission
+    // const applicationData = { userId, opportunityId };
+
+    // Submit data to the backend
+    await model.submitApplication(formData);
+
+    // Success message
+    applyView.renderMessage();
+
+    // Restore the original form HTML after renderMesssage clears it
+    applyView.restoreOriginalHtml();
+
+    setTimeout(function () {
+      if (!applyView.isManuallyClosed()) applyView.toggleWindow();
+    }, MODAL_CLOSE_SEC * 1000);
+  } catch (err) {
+    console.error('💥', err);
+    applyView.renderError(err.message);
+  }
+};
+
+// const checkUserPermission = function (requiredType) {
+//   const user = model.state.user;
+
+//   // Check if user is logged in
+//   if (!user.id) return false;
+
+//   // Check if user is a student
+//   return user.accountType === requiredType;
+// };
+
+const controlDownloadPDF = function () {
+  const opportunity = model.state.opportunity;
+
+  PDFView.generatePDF(opportunity);
+};
+
+const controlAdminDashboard = async function () {
+  try {
+    adminView.toggleSections();
+
+    // Fetch all opportunities and applications
+    const opportunities = await model.fetchAllOpportunities();
+    const applications = await model.fetchAllApplications();
+    const applicantsData = await model.fetchAllApplicantsData();
+
+    adminView.renderStats(opportunities, applications);
+
+    adminView.renderPieChart(applicantsData);
+  } catch (err) {
+    console.error('💥', err);
+    adminView.renderError(err.message);
+  }
+};
+
+const controlSmartSearch = async function () {
+  try {
+    smartResultsView.renderSpinner();
+    smartResultsView.toggleSections();
+
+    // 1. Get the query from the SmartSearchView
+    const query = SmartSearchView.getQuery();
+    if (!query) return;
+    console.log(query);
+
+    // 2. Send the query to the backend or API for processing (placeholder logic)
+    const results = await model.performSmartSearch(query);
+    console.log('Smart Search Results:', results);
+
+    // 3. Render the results
+    smartResultsView.render(results);
+  } catch (err) {
+    console.error('💥', err);
+    smartResultsView.renderError(err.message);
+  }
+};
+
+const init = function () {
+  featuredView.addHandlerFeatured(controlFeaturedOpportunities);
+  SearchView.addHandlerSearch(controlSearchResults);
+  paginationView.addHandlerClick(controlPagination);
+  opportunitiesView.addHandlerRender(controlOpportunities);
+  publishView.addHandlerUpload(controlPublishOpportunity);
+  publishView.addHandlerShowWindow(model.isLoggedIn);
+  controlLogInState();
+  loginView.addHandlerLogin(controlLogIn);
+  logoutView.addHandlerLogout(controlLogOut);
+  signupView.addHandlerShowWindow(controlSignupWindow);
+  signupView.addHandlerUpload(controlSignup);
+  signupView.addHandlerValidation(controlValidateEmail);
+  applyView.addHandlerApply(controlApplication);
+  adminView.addHandlerShowSection(controlAdminDashboard, model.isLoggedIn);
+  SmartSearchView.addHandlerSearch(controlSmartSearch);
+  // controlOpportunities();
+};
+init();
