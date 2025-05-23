@@ -252,3 +252,36 @@ const controlLogOut = async function () {
     logoutView.renderError(err.message);
   }
 };
+
+const controlSignup = async function (newAccount) {
+  try {
+    // Show loading spinner
+    signupView.renderSpinner();
+
+    // Upload the new opportunity data
+    // await model.uploadOpportunity(newOpportunity);
+    // console.log(model.state.opportunity);
+    await model.uploadAccount(newAccount);
+    // console.log(newAccount);
+
+    // Update the login button text
+    loginView.updateLoginButton(model.isLoggedIn());
+
+    // Update log out form with user name and surname
+    const userData = await model.getUserDetails();
+    logoutView.updateUserNameSurname(userData);
+
+    // Success message
+    signupView.renderMessage();
+
+    // Restore the original form HTML after renderMesssage clears it
+    signupView.restoreOriginalHtml();
+
+    setTimeout(function () {
+      if (!signupView.isManuallyClosed()) signupView.toggleWindow();
+    }, MODAL_CLOSE_SEC * 1000);
+  } catch (err) {
+    console.error('💥', err);
+    signupView.renderError(err.message);
+  }
+};
