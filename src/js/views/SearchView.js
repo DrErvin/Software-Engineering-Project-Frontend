@@ -1,12 +1,13 @@
 class SearchView {
   #parentEl = document.querySelector('.search-form');
+
   #featuredSection = document.querySelector('.featured-opportunity');
   #listSection = document.querySelector('.opportunities-list');
 
   /**
    * Get search query values from the form
    * @returns {Object} The search query object
-   **/
+   */
 
   getQuery() {
     const inputs = this.#parentEl.querySelectorAll('input[type="text"]');
@@ -18,6 +19,7 @@ class SearchView {
       fieldOfWork: dropdowns[0].value.trim(),
       // type: dropdowns[1].value.trim(),
     };
+
     this.#clearInput();
     // this.#toggleSections();
     return query;

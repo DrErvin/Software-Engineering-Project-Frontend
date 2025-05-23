@@ -3,6 +3,7 @@ import View from './View.js';
 class loginView extends View {
   _parentElement = document.querySelector('.login-form');
   _message = 'You have been successfully logged in :)';
+
   _window = document.querySelector('.login-form-window');
   _overlay = document.querySelector('.overlay--login');
   _btnOpen = document.querySelector('#logInSignUp');

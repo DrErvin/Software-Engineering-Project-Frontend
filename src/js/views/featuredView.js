@@ -14,9 +14,7 @@ class FeaturedOpportunitiesView extends View {
         (opportunity) => `
         <div class="opportunity-item">
           <h3>${opportunity.title || 'Untitled Opportunity'}</h3>
-          <p>${opportunity.type || 'Unknown Type'} - ${
-          opportunity.location || 'Location not specified'
-        }</p>
+          <p>${opportunity.location || 'Location not specified'}</p>
           <a href="#${opportunity.id}" class="view-opportunity-btn">
             View Opportunity
           </a>

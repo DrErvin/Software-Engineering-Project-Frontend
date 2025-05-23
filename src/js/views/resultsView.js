@@ -1,4 +1,5 @@
 import View from './View.js';
+import previewView from './previewView.js';
 
 class resultsView extends View {
   _parentElement = document.querySelector('.container-opp-list');
