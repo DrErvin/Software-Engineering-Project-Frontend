@@ -1,18 +1,18 @@
 import View from './View.js';
 
 class introView extends View {
-    _parentElement = document.querySelector('.intro-section');
+  _parentElement = document.querySelector('.intro-section');
 
-    /**
-     * Generates markup for the intro section
-     * @returns {string} The generated HTML markup
-     */
-    _generateMarkup() {
-            const { location, fieldOfStudy, type, titleOrKeyword } = this._data;
+  /**
+   * Generates markup for the intro section
+   * @returns {string} The generated HTML markup
+   */
+  _generateMarkup() {
+    const { location, fieldOfStudy, type, titleOrKeyword } = this._data;
 
-            const title =
-                location || fieldOfStudy || type ?
-                `
+    const title =
+      location || fieldOfStudy || type
+        ? `
         ${location ? `${location} Opportunities` : 'Opportunities'}
         ${fieldOfStudy ? `in ${fieldOfStudy}` : ''}
         ${type ? `of type ${type}` : ''}
