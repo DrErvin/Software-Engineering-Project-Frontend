@@ -19,5 +19,9 @@
   "homepage": "https://github.com/DrErvin/Software-Engineering-Project-Frontend#readme",
   "devDependencies": {
     "vite": "^6.2.3"
+  },
+  "dependencies": {
+    "chart.js": "^4.4.9",
+    "jspdf": "^3.0.1"
   }
 }

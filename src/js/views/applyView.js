@@ -30,8 +30,8 @@ class applyView extends View {
 
       e.preventDefault();
 
-      if (!isLoggedIn('student')) {
-        alert('You must be logged in as a student to apply.');
+      if (!isLoggedIn('candidate')) {
+        alert('You must be logged in as a candidate to apply.');
         return;
       }
 

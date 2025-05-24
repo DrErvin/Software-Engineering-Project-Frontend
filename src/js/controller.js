@@ -7,15 +7,15 @@ import resultsView from './views/resultsView.js';
 import paginationView from './views/paginationView.js';
 // import introView from './views/introView.js';
 import opportunitiesView from './views/OpportunitiesView.js';
-// import publishView from './views/publishView.js';
+import publishView from './views/publishView.js';
 import loginView from './views/loginView.js';
 // import logoutView from './views/logoutView.js';
-// import signupView from './views/signupView.js';
+import signupView from './views/signupView.js';
 import applyView from './views/applyView.js';
 // import PDFView from './views/PDFView.js';
 import adminView from './views/adminView.js';
-// import SmartSearchView from './views/SmartSearchView.js';
-// import smartResultsView from './views/smartResultsView.js';
+import SmartSearchView from './views/SmartSearchView.js';
+import smartResultsView from './views/smartResultsView.js';
 
 const controlFeaturedOpportunities = async function () {
   try {
@@ -418,7 +418,7 @@ const init = function () {
   publishView.addHandlerShowWindow(model.isLoggedIn);
   controlLogInState();
   loginView.addHandlerLogin(controlLogIn);
-  logoutView.addHandlerLogout(controlLogOut);
+  // logoutView.addHandlerLogout(controlLogOut);
   signupView.addHandlerShowWindow(controlSignupWindow);
   signupView.addHandlerUpload(controlSignup);
   signupView.addHandlerValidation(controlValidateEmail);

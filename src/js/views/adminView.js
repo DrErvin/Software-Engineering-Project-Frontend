@@ -48,7 +48,7 @@ class adminView extends View {
     this._btnShow.addEventListener('click', (e) => {
       e.preventDefault();
 
-      if (!isLoggedIn('company')) {
+      if (!isLoggedIn('employer')) {
         alert(
           'You must be logged in as a Company user to access Admin Dashboard.'
         );

@@ -29,7 +29,7 @@ class opportunitiesView extends View {
   // }
 
   addHandlerPermission(isLoggedIn) {
-    this.#adminPermission = isLoggedIn('company');
+    this.#adminPermission = isLoggedIn('employer');
   }
 
   updateButtons(isLoggedIn) {
@@ -40,8 +40,8 @@ class opportunitiesView extends View {
     )
       return;
 
-    // Update the company permission status
-    this.#adminPermission = isLoggedIn('company');
+    // Update the employer permission status
+    this.#adminPermission = isLoggedIn('employer');
 
     // Re-render the opportunity details with the updated buttons
     this.render(this._data);
