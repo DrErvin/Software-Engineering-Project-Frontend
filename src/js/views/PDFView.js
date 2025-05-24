@@ -6,7 +6,7 @@ class PDFView {
     const doc = new jsPDF();
 
     // Job Platform brand color
-    const brandColor = [226, 0, 116];
+    const brandColor = [46, 99, 166];
 
     // --- Header Section ---
     // Brand rectangle
@@ -44,7 +44,7 @@ class PDFView {
 
     doc.setFontSize(14);
     const headerInfo = [
-      `Type: ${opportunity.type}`,
+      //   `Type: ${opportunity.type}`,
       `Location: ${opportunity.location}`,
       `Experience: ${experienceList.join(', ')}`,
       `Engagement: ${opportunity.engagementType}`,
@@ -56,20 +56,35 @@ class PDFView {
     let yOffset = 41;
     headerInfo.forEach((line) => {
       doc.text(line, 25, yOffset);
-      yOffset += 8;
+      yOffset += 8; // Adjust the spacing between lines
     });
+
+    // doc.text(headerInfo.join('\n'), 25, 41);
 
     doc.setFontSize(16);
     doc.setTextColor(0, 0, 0);
     doc.setFont('helvetica', 'normal');
     doc.text('Details:', 20, 100);
+    // --- Opportunity Details Section ---
+    // const yourProfileList = Array.isArray(opportunity.yourProfile)
+    //   ? opportunity.yourProfile
+    //   : [opportunity.yourProfile];
+
+    // doc.setFontSize(14);
+    // const details = [
+    //   `Description: ${opportunity.opportunityDescription}`,
+    //   `Profile: ${yourProfileList.join(', ')}`,
+    //   `Benefits: ${opportunity.benefits.join(', ')}`,
+    //   `Employee Info: ${opportunity.employeeInfo}`,
+    // ];
+    // doc.text(details.join('\n \n'), 20, 110);
 
     doc.setFontSize(14);
     const wrapText = (text, x, y, maxWidth) => {
       const lines = doc.splitTextToSize(text, maxWidth);
       lines.forEach((line) => {
         doc.text(line, x, y);
-        y += 6;
+        y += 6; // Adjust line height
       });
       return y;
     };
@@ -118,17 +133,19 @@ class PDFView {
     );
 
     // --- Footer Section ---
-    const logo = await this.loadImage('img/logo2PDF.jpg');
+    const logo = await this.loadImage('img/logo.jpg');
     doc.addImage(logo, 'JPEG', 20, 240, 30, 35);
 
     doc.setFontSize(14);
     doc.setTextColor(0, 0, 0);
+    // Footer Text
     const footerText = [
-      'Job Platform',
+      'Job Platform DOO',
       `Contact: ${opportunity.contactPerson}`,
       `${opportunity.contactPersonEmail}`,
     ];
 
+    // Position the text next to the logo
     let footerY = 250;
     footerText.forEach((line) => {
       doc.text(line, 125, footerY, { maxWidth: 68 });

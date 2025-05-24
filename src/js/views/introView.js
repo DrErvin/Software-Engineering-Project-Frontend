@@ -8,13 +8,13 @@ class introView extends View {
    * @returns {string} The generated HTML markup
    */
   _generateMarkup() {
-    const { location, fieldOfStudy, type, titleOrKeyword } = this._data;
+    const { location, fieldOfWork, type, titleOrKeyword } = this._data;
 
     const title =
-      location || fieldOfStudy || type
+      location || fieldOfWork || type
         ? `
         ${location ? `${location} Opportunities` : 'Opportunities'}
-        ${fieldOfStudy ? `in ${fieldOfStudy}` : ''}
+        ${fieldOfWork ? `in ${fieldOfWork}` : ''}
         ${type ? `of type ${type}` : ''}
       `.trim()
         : 'Opportunities of all types';
