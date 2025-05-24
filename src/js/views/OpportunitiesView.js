@@ -69,7 +69,7 @@ class opportunitiesView extends View {
           <h1 class="opportunity-title">${
             this._data.title || 'Untitled Opportunity'
           }</h1>
-          <p class="opportunity-type">${this._data.type || 'N/A'}</p>
+          <p class="opportunity-type">${this._data.fieldOfWork || 'N/A'}</p>
           <p class="opportunity-location">
             <svg class="icon-opport-header">
               <use href="img/icons.svg#icon-location-marker"></use>
@@ -154,7 +154,7 @@ class opportunitiesView extends View {
         <div class="contact-person-section">
           <h2>Contact Person</h2>
           <div class="contact-person-details">
-            <img src="img/user.jpeg" alt="Contact Person" class="contact-person-image" />
+            <img src="img/user.jpg" alt="Contact Person" class="contact-person-image" />
             <div class="contact-person-info">
               <p><strong>Name:</strong> ${this._data.contactPerson || 'N/A'}</p>
               <p><strong>Email:</strong> 

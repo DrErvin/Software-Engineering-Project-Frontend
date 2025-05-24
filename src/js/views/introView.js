@@ -31,3 +31,5 @@ class introView extends View {
     `;
   }
 }
+
+export default new introView();

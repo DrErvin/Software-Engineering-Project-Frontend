@@ -120,7 +120,7 @@ export const loadSearchResults = async function (query) {
     // Map the filtered results to include only the required fields
     state.search.results = matchedResults.map((opportunity) => ({
       id: opportunity.id,
-      type: opportunity.type,
+      fieldOfWork: opportunity.fieldOfWork,
       location: opportunity.location,
       title: opportunity.title,
       experience: opportunity.experienceRequired,

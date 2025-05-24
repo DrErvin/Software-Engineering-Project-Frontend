@@ -8,7 +8,7 @@ class previewView extends View {
         <div class="opportunity-card">
           <img src="img/logo.jpg" alt="Company logo" class="card-logo" />
           <div class="card-info">
-            <h3 class="card-type">${this._data.type || 'N/A'}</h3>
+            <h3 class="card-type">${this._data.fieldOfWork || 'N/A'}</h3>
             <h2 class="card-title">${
               this._data.title || 'Untitled Opportunity'
             }</h2>
