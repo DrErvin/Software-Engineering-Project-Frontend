@@ -236,8 +236,8 @@ const controlLogOut = async function () {
     model.clearLocalStorage();
 
     // Reset signup form validation state
-    signupView.resetValidation();
-    signupView.addHandlerValidation(controlValidateEmail);
+    // signupView.resetValidation();
+    // signupView.addHandlerValidation(controlValidateEmail);
 
     // Update the login/signup button text
     loginView.updateLoginButton();
@@ -302,10 +302,10 @@ const controlSignupWindow = async function () {
     // Open the signup form
     signupView.toggleWindow();
 
-    if (model.areUniversitiesCached()) return;
+    // if (model.areUniversitiesCached()) return;
 
     // Preload university domains
-    await model.preloadUniversityDomains();
+    // await model.preloadUniversityDomains();
   } catch (err) {
     console.error('💥', err);
     signupView.renderError(err.message);
@@ -423,7 +423,7 @@ const init = function () {
   logoutView.addHandlerLogout(controlLogOut);
   signupView.addHandlerShowWindow(controlSignupWindow);
   signupView.addHandlerUpload(controlSignup);
-  signupView.addHandlerValidation(controlValidateEmail);
+  // signupView.addHandlerValidation(controlValidateEmail);
   applyView.addHandlerApply(controlApplication);
   adminView.addHandlerShowSection(controlAdminDashboard, model.isLoggedIn);
   SmartSearchView.addHandlerSearch(controlSmartSearch);

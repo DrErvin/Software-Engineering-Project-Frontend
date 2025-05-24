@@ -9,9 +9,9 @@ class signupView extends View {
   _btnOpen = document.querySelector('#openSignUpForm');
   _btnClose = document.querySelector('.signup-btn--close-modal');
 
-  _validationError = document.querySelector('.signup__emailError');
+  // _validationError = document.querySelector('.signup__emailError');
   _submitButton = document.querySelector('.signup__btn');
-  _isEmailValid = false; // Track email validation status
+  // _isEmailValid = false; // Track email validation status
 
   constructor() {
     super();
@@ -25,19 +25,19 @@ class signupView extends View {
     // Refresh the _validationError reference when toggling the window
   }
 
-  toggleValidationError(show = false) {
-    this._validationError.classList.toggle('hidden', !show);
-    // this._submitButton.disabled = show; // Disable submit button if there is an error
-  }
+  // toggleValidationError(show = false) {
+  //   this._validationError.classList.toggle('hidden', !show);
+  //   // this._submitButton.disabled = show; // Disable submit button if there is an error
+  // }
 
   isManuallyClosed() {
     return this._window.classList.contains('hidden-oppacity');
   }
 
-  resetValidation() {
-    this._isEmailValid = false;
-    this.toggleValidationError(false);
-  }
+  // resetValidation() {
+  //   this._isEmailValid = false;
+  //   this.toggleValidationError(false);
+  // }
 
   _addHandlerHideWindow() {
     this._btnClose.addEventListener('click', this.toggleWindow.bind(this));
@@ -60,20 +60,20 @@ class signupView extends View {
     });
   }
 
-  addHandlerValidation(handler) {
-    const emailInput = this._parentElement.querySelector('#signUpEmail');
-    emailInput.addEventListener(
-      'input',
-      async function (e) {
-        const email = e.target.value;
-        this._isEmailValid = await handler(email);
+  // addHandlerValidation(handler) {
+  //   const emailInput = this._parentElement.querySelector('#signUpEmail');
+  //   emailInput.addEventListener(
+  //     'input',
+  //     async function (e) {
+  //       const email = e.target.value;
+  //       this._isEmailValid = await handler(email);
 
-        // Refresh the _validationError reference when opening the second time
-        this._validationError = document.querySelector('.signup__emailError');
-        this.toggleValidationError(!this._isEmailValid);
-      }.bind(this)
-    );
-  }
+  //       // Refresh the _validationError reference when opening the second time
+  //       this._validationError = document.querySelector('.signup__emailError');
+  //       this.toggleValidationError(!this._isEmailValid);
+  //     }.bind(this)
+  //   );
+  // }
 
   addHandlerUpload(handler) {
     this._parentElement.addEventListener(
@@ -81,10 +81,10 @@ class signupView extends View {
       function (e) {
         e.preventDefault();
 
-        if (!this._isEmailValid) {
-          this.toggleValidationError(true);
-          return; // Prevent submission if email is invalid
-        }
+        // if (!this._isEmailValid) {
+        //   this.toggleValidationError(true);
+        //   return; // Prevent submission if email is invalid
+        // }
 
         const dataArr = [...new FormData(this._parentElement)];
         const data = Object.fromEntries(dataArr);

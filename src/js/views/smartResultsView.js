@@ -39,9 +39,6 @@ class smartResultsView extends View {
                 <p><strong>Opportunity Location:</strong> ${
                   data.opportunity_location || 'N/A'
                 }</p>
-                <p><strong>Applicant Country:</strong> ${
-                  data.university_location || 'Unkown Country'
-                } (${data.university_name || 'No University Info'})</p>
                 <p><strong>Submitted:</strong> ${
                   data.application_date || 'Unknown'
                 }</p>

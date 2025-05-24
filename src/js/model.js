@@ -389,45 +389,16 @@ export const validateEmail = async function (email) {
   }
 };
 
-export const generateUserInfo = async function (email) {
+export const generateUserInfo = function (email, accountType) {
   try {
-    // Extract the domain from the email
-    const emailDomain = email.split('@')[1];
+    // Prefix IDs: 'e-' for employer, 'c-' for candidate
+    const prefix = accountType === 'employer' ? 'e-' : 'c-';
 
-    // Normalize the domain by progressively removing subdomains
-    const domainParts = emailDomain.split('.');
-    const normalizedDomain = domainParts.slice(-2).join('.');
-
-    const isTelekomDomain = normalizedDomain === 'telekom.com';
-    const idPrefix = isTelekomDomain ? 't-' : 's-';
-    const account_type = isTelekomDomain ? 'Telekom' : 'student';
-
-    // Default user object
-    const userInfo = {
-      id: `${idPrefix}${Date.now()}`, // Unique ID
-      email,
-      account_type,
-      university_name: null,
-      university_location: null,
+    return {
+      id: `${prefix}${Date.now()}`, // unique
+      email, // keep the email
+      account_type: accountType, // store exactly what user picked
     };
-
-    if (isTelekomDomain) return userInfo;
-
-    // Fetch university details only if it's a university domain
-    // if (!isTelekomDomain) {
-    const universities = await AJAX(`${API_URL}/world-universities`);
-    const university = universities.find((uni) =>
-      uni.domains.some((domain) => emailDomain.endsWith(domain))
-    );
-
-    if (!university) return userInfo;
-    // if (university) {
-    userInfo.university_name = university.name;
-    userInfo.university_location = university.country;
-    // }
-    // }
-
-    return userInfo;
   } catch (err) {
     console.error('Error generating user info:', err);
     throw err;
@@ -437,7 +408,7 @@ export const generateUserInfo = async function (email) {
 export const uploadAccount = async function (newAccount) {
   try {
     // Generate user info based on the email
-    const userInfo = await generateUserInfo(newAccount.email);
+    const userInfo = generateUserInfo(newAccount.email, newAccount.accountType);
 
     // Prepare account object
     const account = {
