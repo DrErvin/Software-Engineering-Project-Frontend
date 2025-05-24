@@ -65,7 +65,7 @@ class opportunitiesView extends View {
     return `
       <div class="container details-container">
         <div class="details-header">
-          <img src="img/logo.jpg" alt="Company Logo" class="company-logo" />
+          <img src="img/logo.webp" alt="Company Logo" class="company-logo" />
           <h1 class="opportunity-title">${
             this._data.title || 'Untitled Opportunity'
           }</h1>
@@ -154,7 +154,7 @@ class opportunitiesView extends View {
         <div class="contact-person-section">
           <h2>Contact Person</h2>
           <div class="contact-person-details">
-            <img src="img/user.jpg" alt="Contact Person" class="contact-person-image" />
+            <img src="img/user.webp" alt="Contact Person" class="contact-person-image" />
             <div class="contact-person-info">
               <p><strong>Name:</strong> ${this._data.contactPerson || 'N/A'}</p>
               <p><strong>Email:</strong> 

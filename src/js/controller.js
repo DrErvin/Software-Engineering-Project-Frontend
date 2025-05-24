@@ -364,7 +364,9 @@ const controlApplication = async function (formData) {
 // };
 
 const controlDownloadPDF = function () {
+  console.log('controlDownloadPDF initiated');
   const opportunity = model.state.opportunity;
+  console.log('PDF called with:', opportunity);
 
   PDFView.generatePDF(opportunity);
 };
@@ -380,7 +382,7 @@ const controlAdminDashboard = async function () {
 
     adminView.renderStats(opportunities, applications);
 
-    adminView.renderPieChart(applicantsData);
+    adminView.renderPieChart(applications);
   } catch (err) {
     console.error('💥', err);
     adminView.renderError(err.message);

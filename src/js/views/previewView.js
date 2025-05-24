@@ -6,7 +6,7 @@ class previewView extends View {
   _generateMarkup() {
     return `
         <div class="opportunity-card">
-          <img src="img/logo.jpg" alt="Company logo" class="card-logo" />
+          <img src="img/logo2.webp" alt="Company logo" class="card-logo" />
           <div class="card-info">
             <h3 class="card-type">${this._data.fieldOfWork || 'N/A'}</h3>
             <h2 class="card-title">${

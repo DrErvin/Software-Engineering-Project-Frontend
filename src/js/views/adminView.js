@@ -59,48 +59,43 @@ class adminView extends View {
     });
   }
 
-  renderPieChart(applicantsData) {
-    // Aggregate the data by country with unique accounts
-    const applicantsByCountry = applicantsData.reduce((acc, applicant) => {
-      const country = applicant.university_location || 'Unknown';
-      if (!acc[country]) acc[country] = new Set(); // Use a Set to ensure unique accounts
-      acc[country].add(applicant.id); // Add the unique account ID
+  renderPieChart(applications) {
+    // 1) Aggregate by date
+    const countsByDate = applications.reduce((acc, app) => {
+      const date = app.application_date || 'Unknown';
+      acc[date] = (acc[date] || 0) + 1;
       return acc;
     }, {});
 
-    // Prepare labels and values for the chart
-    const labels = Object.keys(applicantsByCountry).map(
-      (country) => `${country} (${applicantsByCountry[country].size})` // Add counts to labels
+    // 2) Prepare labels (“YYYY-MM-DD (n)”) and data arrays
+    const labels = Object.keys(countsByDate).map(
+      (date) => `${date} (${countsByDate[date]})`
     );
-    const values = Object.values(applicantsByCountry).map((set) => set.size); // Get unique counts
+    const data = Object.values(countsByDate);
 
-    // Render the chart
+    // 3) (Optional) generate one distinct HSL color per slice
+    const backgroundColor = labels.map(
+      (_, i) => `hsl(${(i * 360) / labels.length}, 70%, 70%)`
+    );
+
+    // 4) Render the pie chart
     const ctx = document.getElementById('pieChart').getContext('2d');
     new Chart(ctx, {
       type: 'pie',
       data: {
-        labels: labels,
+        labels,
         datasets: [
           {
-            label: 'Applicants by Country',
-            data: values,
-            backgroundColor: [
-              '#e20074', //#e20074-#FF6384
-              '#36A2EB',
-              '#FFCE56',
-              '#4BC0C0',
-              '#9966FF',
-              '#FF9F40',
-            ],
+            label: 'Applications by Date',
+            data,
+            backgroundColor,
           },
         ],
       },
       options: {
         responsive: true,
         plugins: {
-          legend: {
-            position: 'top',
-          },
+          legend: { position: 'top' },
         },
       },
     });

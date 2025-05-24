@@ -20,7 +20,7 @@ class PDFView {
     }
 
     // Circular shape (top right)
-    const circleShape = await this.loadImage('img/circleShapePDF.jpg');
+    const circleShape = await this.loadImage('img/circleShapePDF.webp');
     doc.addImage(circleShape, 'JPEG', 166.7, 0, 45, 38);
 
     // Header text
@@ -44,7 +44,7 @@ class PDFView {
 
     doc.setFontSize(14);
     const headerInfo = [
-      //   `Type: ${opportunity.type}`,
+      // `Type: ${opportunity.type}`,
       `Location: ${opportunity.location}`,
       `Experience: ${experienceList.join(', ')}`,
       `Engagement: ${opportunity.engagementType}`,
@@ -133,7 +133,7 @@ class PDFView {
     );
 
     // --- Footer Section ---
-    const logo = await this.loadImage('img/logo.jpg');
+    const logo = await this.loadImage('img/logo.webp');
     doc.addImage(logo, 'JPEG', 20, 240, 30, 35);
 
     doc.setFontSize(14);
