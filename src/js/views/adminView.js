@@ -1,5 +1,6 @@
 import View from './View.js';
 import { Chart, registerables } from 'chart.js';
+
 Chart.register(...registerables);
 
 class adminView extends View {
@@ -7,6 +8,7 @@ class adminView extends View {
   _errorMessage =
     'We could not load the admin dashboard. Please try another time!';
   _message = '';
+
   _btnShow = document.querySelector('#admin-btn');
   _sectionsToShow = [
     document.querySelector('.smart-search'),
@@ -35,6 +37,7 @@ class adminView extends View {
 
     // Total applications count
     const totalApplications = applications.length;
+
     document.querySelector('#opportunities-count').textContent =
       activeOpportunities;
     document.querySelector('#applications-count').textContent =
@@ -44,8 +47,11 @@ class adminView extends View {
   addHandlerShowSection(handler, isLoggedIn) {
     this._btnShow.addEventListener('click', (e) => {
       e.preventDefault();
-      if (!isLoggedIn('admin')) {
-        alert('You must be logged in as admin to access Admin Dashboard.');
+
+      if (!isLoggedIn('company')) {
+        alert(
+          'You must be logged in as a Company user to access Admin Dashboard.'
+        );
         return;
       }
 
@@ -56,7 +62,7 @@ class adminView extends View {
   renderPieChart(applicantsData) {
     // Aggregate the data by country with unique accounts
     const applicantsByCountry = applicantsData.reduce((acc, applicant) => {
-      const country = applicant.location || 'Unknown';
+      const country = applicant.university_location || 'Unknown';
       if (!acc[country]) acc[country] = new Set(); // Use a Set to ensure unique accounts
       acc[country].add(applicant.id); // Add the unique account ID
       return acc;

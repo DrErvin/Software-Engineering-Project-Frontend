@@ -6,14 +6,14 @@ import SearchView from './views/SearchView.js';
 import resultsView from './views/resultsView.js';
 import paginationView from './views/paginationView.js';
 // import introView from './views/introView.js';
-// import opportunitiesView from './views/opportunitiesView.js';
+import opportunitiesView from './views/OpportunitiesView.js';
 // import publishView from './views/publishView.js';
 import loginView from './views/loginView.js';
 // import logoutView from './views/logoutView.js';
 // import signupView from './views/signupView.js';
-// import applyView from './views/applyView.js';
+import applyView from './views/applyView.js';
 // import PDFView from './views/PDFView.js';
-// import adminView from './views/adminView.js';
+import adminView from './views/adminView.js';
 // import SmartSearchView from './views/SmartSearchView.js';
 // import smartResultsView from './views/smartResultsView.js';
 
