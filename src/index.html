@@ -6,13 +6,58 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <title>Job-Career Platform</title>
     <link rel="stylesheet" href="css/main.css" />
-
     <script type="module" src="js/controller.js"></script>
   </head>
 
   <body>
-    <!-- Header Section -->
-    <header class="main-header">
+    <!-- Landing Page Section -->
+    <div class="homepage-section">
+      <section class="homepage">
+        <div class="homepage__hero">
+          <h1 class="homepage__title">Find Your Dream Job</h1>
+          <p class="homepage__subtitle">Connecting employers and candidates</p>
+          <div class="homepage__buttons">
+            <button class="btn btn--employer" data-link="login-signup">Sign In as Employer</button>
+            <button class="btn btn--candidate" data-link="default">Sign In as Candidate</button>
+          </div>
+        </div>
+        <div class="how-it-works">
+          <h2 class="how-it-works__title">How It Works</h2>
+          <div class="how-it-works__steps">
+            <div class="step">
+              <div class="step__icon">
+                <svg class="step__svg">
+                  <use href="img/icons.svg#icon-signup"></use>
+                </svg>
+              </div>
+              <h3 class="step__title">Create Your Profile</h3>
+              <p class="step__description">Set up your professional profile and showcase your skills and experience.</p>
+            </div>
+            <div class="step">
+              <div class="step__icon">
+                <svg class="step__svg">
+                  <use href="img/icons.svg#icon-loading"></use>
+                </svg>
+              </div>
+              <h3 class="step__title">Explore Opportunities</h3>
+              <p class="step__description">Browse through thousands of job opportunities that match your preferences.</p>
+            </div>
+            <div class="step">
+              <div class="step__icon">
+                <svg class="step__svg">
+                  <use href="img/icons.svg#icon-smile"></use>
+                </svg>
+              </div>
+              <h3 class="step__title">Connect and Grow</h3>
+              <p class="step__description">Connect with employers and grow your career with the perfect job match.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+
+    <!-- Header Section (initially hidden) -->
+    <header class="main-header hidden">
       <nav class="nav">
         <img
           src="img/logo.webp"
@@ -22,7 +67,6 @@
         />
         <ul class="nav__links">
           <li class="nav__item">
-            <!-- <button data-section-to-show="home" class="nav__link">Home</button> -->
             <a class="nav__link" id="homeBtn" href="index.html">Home</a>
           </li>
           <li class="nav__item">
@@ -34,19 +78,6 @@
           <li class="nav__item">
             <a class="nav__link" href="#newsletter-section">Newsletter</a>
           </li>
-          <!-- <li class="nav__item">
-          <a class="nav__link" href="#">Meetups</a>
-        </li> -->
-          <!-- <li class="nav__item">
-            <a class="nav__link nav__link--btn btn--show-modal" href="#"
-              >Post a Listing</a
-            >
-          </li>
-          <li class="nav__item">
-            <a class="nav__link nav__link--btn btn--show-modal" href="#"
-              >Log In/Sign Up</a
-            >
-          </li> -->
         </ul>
         <!-- Buttons (Post a Listing and Log In/Sign Up) -->
         <div class="nav__buttons">
@@ -58,8 +89,8 @@
       </nav>
     </header>
 
-    <!-- Search and Featured opportunities Sections -->
-    <div id="main-content" class="">
+    <!-- Search and Featured opportunities Sections (initially hidden) -->
+    <div id="main-content" class="hidden">
       <!-- Main Content with Search Form and Intro Text -->
       <section class="intro-section">
         <div class="container">
@@ -112,172 +143,19 @@
       <section class="opportunities-list hidden">
         <div class="container">
           <h2>Available Opportunities</h2>
-
-          <div class="container-opp-list">
-            <!-- <div class="opportunity-card">
-            <img src="src/img/logo2.jpg" alt="Telekom logo" class="card-logo" />
-            <div class="card-info">
-              <h3 class="card-type">Job Offer</h3>
-              <h2 class="card-title">Frontend Developer</h2>
-            </div>
-            <div class="card-details">
-              <div class="card-detail-item">
-                <div class="card-detail-label">
-                  <svg class="card-icon">
-                    <use href="src/img/icons.svg#icon-location-marker"></use>
-                  </svg>
-                  <span>Location</span>
-                </div>
-                <p>Sarajevo, Mostar</p>
-              </div>
-              <div class="card-detail-item">
-                <div class="card-detail-label">
-                  <svg class="card-icon">
-                    <use href="src/img/icons.svg#icon-experience"></use>
-                  </svg>
-                  <span>Experience</span>
-                </div>
-                <p>Senior</p>
-              </div>
-              <div class="card-detail-item last-item">
-                <div class="card-detail-label">
-                  <svg class="card-icon">
-                    <use href="src/img/icons.svg#icon-deadline"></use>
-                  </svg>
-                  <span>Deadline</span>
-                </div>
-                <p>28 days left</p>
-              </div>
-            </div>
-            <a href="#" class="card-link">
-              <button class="card-btn">View Opportunity</button>
-            </a>
-          </div> -->
-          </div>
-
-          <div class="pagination">
-            <!-- <button class="pagination-btn pagination__btn--prev">
-            <svg class="pagination-icon">
-              <use href="src/img/icons.svg#icon-arrow-left"></use>
-            </svg>
-            <span>Page 1</span>
-          </button>
-          <button class="pagination-btn pagination__btn--next">
-            <svg class="pagination-icon">
-              <use href="src/img/icons.svg#icon-arrow-right"></use>
-            </svg>
-            <span>Page 3</span>
-          </button> -->
-          </div>
+          <div class="container-opp-list"></div>
+          <div class="pagination"></div>
         </div>
       </section>
     </div>
 
-    <!-- Opportunity Details Section (initially hidden) style="display: none;" -->
+    <!-- Opportunity Details Section (initially hidden) -->
     <div id="details-content" class="">
-      <!-- Main Details Section -->
-      <section class="details-opportunity hidden">
-        <!--<div class="container details-container">
-        <div class="details-header">
-          <img src="src/img/logo.jpg" alt="Company Logo" class="company-logo" />
-          <h1 class="opportunity-title">Operations Manager</h1>
-          <p class="opportunity-type">Adriatic Valley Digital Holding</p>
-          <p class="opportunity-location">
-            <svg class="icon-opport-header">
-              <use href="src/img/icons.svg#icon-location-marker"></use>
-            </svg>
-            Banja Luka
-          </p>
-          <p class="opportunity-tags"><a href="#">SCRUM</a> <a href="#">Sales</a></p>
-        </div>
-
-        <div class="opportunity-info">
-          <div class="opportunity-experience">
-            <svg class="icon-opport-header">
-              <use href="src/img/icons.svg#icon-experience"></use>
-            </svg>
-            <p><strong>Experience:</strong> Senior</p>
-          </div>
-          <div class="opportunity-engagement">
-            <svg class="icon-opport-header">
-              <use href="src/img/icons.svg#icon-engagement"></use>
-            </svg>
-            <p><strong>Engagement:</strong> Full-time</p>
-          </div>
-          <div class="opportunity-deadline">
-            <svg class="icon-opport-header">
-              <use href="src/img/icons.svg#icon-deadline"></use>
-            </svg>
-            <p><strong>Deadline:</strong> 15 days left</p>
-          </div>
-        </div>
-
-        <div class="apply-button">
-          <a href="#" class="apply-now-btn">Apply Now</a>
-        </div>
-
-        <div class="opportunity-section">
-          <h2>Your Tasks (Job Description)</h2>
-          <p>As an Operations Manager, you will oversee daily operations...</p>
-        </div>
-
-        <div class="opportunity-section">
-          <h2>Your Profile (Qualifications & Requirements)</h2>
-          <ul>
-            <li>Minimum 5 years of experience in operations management</li>
-            <li>Strong leadership and communication skills</li>
-            <li>Proven experience with SCRUM and agile methodologies</li>
-          </ul>
-        </div>
-
-        <div class="opportunity-section">
-          <h2>What We Offer</h2>
-          <ul>
-            <li>Competitive salary and performance bonuses</li>
-            <li>Health and wellness benefits</li>
-            <li>Opportunity for professional growth and development</li>
-          </ul>
-        </div>
-
-        <div class="opportunity-section">
-          <h2>About the Company</h2>
-          <p>
-            Adriatic Valley Digital Holding is dedicated to fostering the
-            development of the tech community in the Adriatic region, helping
-            companies implement sustainable tech solutions...
-          </p>
-        </div>
-
-        <div class="contact-person-section">
-          <h2>Contact Person</h2>
-          <div class="contact-person-details">
-            <img src="src/img/LoveMagenta.jpeg" alt="Contact Person" class="contact-person-image" />
-            <div class="contact-person-info">
-              <p><strong>Name:</strong> Jane Doe</p>
-              <p><strong>Email:</strong> <a href="mailto:jane.doe@telekom.com">jane.doe@telekom.com</a></p>
-            </div>
-          </div>
-        </div>
-
-        <div class="apply-button">
-          <a href="#" class="apply-now-btn">Apply Now</a>
-        </div>-->
-      </section>
+      <section class="details-opportunity hidden"></section>
     </div>
 
+    <!-- Admin Content (initially hidden) -->
     <div id="admin-content">
-      <!-- <section class="admin-section hidden">
-  
-        <h1>Admin Dashboard</h1>
-        <form class="admin-search-form">
-          <div class="admin-search-inputs">
-            <input type="text" placeholder="Search applications..." name="search" required />
-            <button type="submit" class="btn-admin-search">Search</button>
-          </div>
-        </form>
-  
-      </section> -->
-
       <section class="admin-header hidden">
         <div class="container">
           <h2 class="header-title">Admin Dashboard</h2>
@@ -324,41 +202,12 @@
       <!-- Dynamic Search Results -->
       <section class="admin-search-results hidden">
         <h2>Search Results</h2>
-        <div class="admin-result-cards">
-          <!-- Cards will be dynamically loaded here -->
-          <!-- <div class="admin-card">
-            <div class="admin-card-content">
-              <h3 class="admin-card-title">Frontend Developer</h3>
-              <p class="admin-card-subtitle">Applicant: John Doe <span
-                  class="admin-applicant-email">(john.doe@example.com)</span></p>
-              <div class="admin-card-details">
-                <p><strong>Application ID:</strong> 12345</p>
-                <p><strong>Opportunity Location:</strong> Berlin</p>
-                <p><strong>Applicant Country:</strong> Germany (California State University)</p>
-                <p><strong>Submitted:</strong> 2025-01-10</p>
-              </div>
-            </div>
-          </div>
-  
-          <div class="admin-card">
-            <div class="admin-card-content">
-              <h3 class="admin-card-title">Backend Developer</h3>
-              <p class="admin-card-subtitle">Applicant: Jane Smith <span
-                  class="admin-applicant-email">(jane.smith@example.com)</span></p>
-              <div class="admin-card-details">
-                <p><strong>Application ID:</strong> 67890</p>
-                <p><strong>Opportunity Location:</strong> Sarajevo</p>
-                <p><strong>Applicant Country:</strong> BiH (International University of Sarajevo)</p>
-                <p><strong>Submitted:</strong> 2025-01-12</p>
-              </div>
-            </div>
-          </div> -->
-        </div>
+        <div class="admin-result-cards"></div>
       </section>
     </div>
 
-    <!-- Newsletter Subscription Section-->
-    <section id="newsletter-section" class="newsletter">
+    <!-- Newsletter Subscription Section (initially hidden) -->
+    <section id="newsletter-section" class="newsletter hidden">
       <h2>Top Job Opportunities in Your Inbox</h2>
       <p>
         Subscribe to the Job-Career Portal newsletter, and we will send you the
@@ -387,31 +236,22 @@
       </form>
     </section>
 
-    <!-- Footer Section -->
-    <footer class="main-footer">
+    <!-- Footer Section (initially hidden) -->
+    <footer class="main-footer hidden">
       <div class="container">
         <p>&copy; 2025 Job-Career Platform. All rights reserved.</p>
       </div>
     </footer>
 
+    <!-- All your existing modal forms -->
     <div class="overlay overlay--publish hidden-oppacity"></div>
     <div class="publish-opportunity-window hidden-oppacity">
       <button class="btn--close-modal upload-btn--close-modal">&times;</button>
       <form class="upload">
         <div class="upload__column">
           <h3 class="upload__heading">Opportunity Details</h3>
-          <!-- <label>Type</label>
-          <select required name="type">
-            <option value="" disabled selected>Select Type</option>
-            <option>Job Offer</option>
-            <option>Internship</option>
-            <option>Thesis Topic</option>
-            <option>Mentorship</option>
-            <option>Extra Curriculum Project</option>
-          </select> -->
           <label>Field of Work</label>
           <select required name="fieldOfWork">
-            <!-- name="fieldOfStudy" -->
             <option value="" disabled selected>Select Field of Work</option>
             <option>Catering</option>
             <option>Software Engineering</option>
@@ -565,7 +405,6 @@ TEST23</textarea
         </div>
 
         <div class="login__footer">
-          <!-- <p>Don't have an account? <a href="#" id="signUpLink">Sign Up</a></p> -->
           <p>
             Don't have an account?
             <button class="show__signup__btn" id="openSignUpForm" type="button">
@@ -612,13 +451,6 @@ TEST23</textarea
               simplifying the application process.
             </p>
           </div>
-
-          <!-- <label for="user-type">User Type</label>
-        <select id="user-type" required>
-          <option value="" disabled selected>Select User Type</option>
-          <option>Student</option>
-          <option>Deutsche Telekom</option>
-        </select> -->
 
           <label for="name">Name and Surname</label>
           <input

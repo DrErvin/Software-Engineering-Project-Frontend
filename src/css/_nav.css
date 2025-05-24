@@ -7,7 +7,7 @@
   max-width: 1380px; /* Controls how wide the header contents can stretch */
   margin: 0 auto; /* Centers the header contents within the screen */
   flex-wrap: wrap;
-  font-family: 'TeleNeoWeb', sans-serif;
+  font-family: "TeleNeoWeb", sans-serif;
 }
 
 .nav__logo {
@@ -39,16 +39,14 @@
   font-size: 1rem; */
 }
 
-/* .nav__link--btn {
-  padding: 0.5rem 1rem;
-  border-radius: 5px;
-  margin-right: 15px;
-  border: 2px solid var(--color-primary);
-  font-weight: 500;
-} */
+.nav__buttons {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
 
 .nav__button {
-  font-family: 'TeleNeoWeb', sans-serif;
+  font-family: "TeleNeoWeb", sans-serif;
   padding: 0.5rem 1rem;
   border-radius: 5px;
   margin-right: 15px;
@@ -58,6 +56,7 @@
   color: var(--color-primary);
   cursor: pointer;
   font-size: 1.1rem;
+  white-space: nowrap;
 }
 
 #publishOpportunities {
@@ -112,18 +111,13 @@
 
   .nav__buttons {
     display: flex;
-    gap: 10px;
+    gap: 8px;
   }
-
-  /* .nav__link--btn {
-    padding: 0.4rem 0.8rem; ovo je bilo commented
-    padding: 0.4rem 0.6rem;
-    font-size: 0.9rem;
-  } */
 
   .nav__button {
     padding: 0.4rem 0.8rem;
     font-size: 0.9rem;
+    margin-right: 8px;
   }
 }
 
@@ -142,29 +136,26 @@
     gap: 8px;
   }
 
-  /* .nav__link--btn {
-    width: 100%;
-    text-align: center;
-    margin-right: 0;
-  } */
-
   .nav__logo {
     height: 2.3rem;
     margin-bottom: 5px;
   }
 
   .nav__buttons {
-    flex-direction: column;
-    gap: 5px;
-    max-width: 200px;
-    width: 100%;
+    display: flex;
+    flex-direction: row; /* Keep buttons side by side */
+    gap: 8px;
+    justify-content: center;
     align-items: center;
+    flex-wrap: wrap; /* Allow wrapping if needed */
   }
 
   .nav__button {
-    width: 80%; /* Buttons take up most of the width on smaller screens */
-    padding: 0.5rem;
+    padding: 0.5rem 0.8rem;
     font-size: 0.85rem;
+    margin-right: 0;
+    flex: 0 1 auto; /* Don't grow, but can shrink */
+    min-width: 120px; /* Minimum width for readability */
   }
 }
 
@@ -177,23 +168,23 @@
   .nav__links {
     gap: 5px;
   }
-  /* 
-  .nav__link--btn {
-    font-size: 0.9rem;
-  } */
 
   .nav__logo {
     height: 1.9rem;
   }
 
   .nav__buttons {
-    flex-direction: column;
-    gap: 5px;
+    display: flex;
+    flex-direction: row; /* Keep buttons side by side even on small screens */
+    gap: 6px;
+    justify-content: center;
+    flex-wrap: wrap;
   }
 
   .nav__button {
     font-size: 0.8rem;
-    padding: 0.4rem;
-    width: 80%;
+    padding: 0.4rem 0.6rem;
+    margin-right: 0;
+    min-width: 100px; /* Smaller minimum width for very small screens */
   }
 }
