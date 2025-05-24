@@ -7,7 +7,7 @@ class opportunitiesView extends View {
   _parentElement = document.querySelector('.details-opportunity');
   _errorMessage = 'We could not find that Opportunity. Please try another one!';
   _message = '';
-  
+
   _sectionsToShow = [document.querySelector('.details-opportunity')];
   #adminPermission = null;
   addHandlerRender(handler) {
@@ -29,7 +29,7 @@ class opportunitiesView extends View {
   // }
 
   addHandlerPermission(isLoggedIn) {
-    this.#adminPermission = isLoggedIn('admin');
+    this.#adminPermission = isLoggedIn('company');
   }
 
   updateButtons(isLoggedIn) {
@@ -40,8 +40,9 @@ class opportunitiesView extends View {
     )
       return;
 
-    // Update the Admin permission status
-    this.#adminPermission = isLoggedIn('admin');
+    // Update the company permission status
+    this.#adminPermission = isLoggedIn('company');
+
     // Re-render the opportunity details with the updated buttons
     this.render(this._data);
   }
@@ -50,8 +51,10 @@ class opportunitiesView extends View {
     this._parentElement.addEventListener('click', (e) => {
       const btn = e.target.closest('#download-pdf-btn');
       if (!btn) return;
+
       if (!this.#adminPermission) return;
-      console.log('Admin Permission:', this.#adminPermission);
+      console.log('company Permission:', this.#adminPermission);
+
       e.preventDefault();
       console.log('Calling handler');
       handler();
@@ -139,9 +142,9 @@ class opportunitiesView extends View {
           </ul>
         </div>
 
-        <!-- Employee Info Section -->
+        <!-- Employee(company) Info Section -->
         <div class="opportunity-section">
-          <h2>About Employee</h2>
+          <h2>About the Company</h2>
           <p>
             ${this._data.employeeInfo}
           </p>

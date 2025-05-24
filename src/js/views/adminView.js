@@ -4,7 +4,8 @@ Chart.register(...registerables);
 
 class adminView extends View {
   _parentElement = document.querySelector('#admin-content');
-  _errorMessage ='We could not load the admin dashboard. Please try another time!';
+  _errorMessage =
+    'We could not load the admin dashboard. Please try another time!';
   _message = '';
   _btnShow = document.querySelector('#admin-btn');
   _sectionsToShow = [
@@ -34,8 +35,10 @@ class adminView extends View {
 
     // Total applications count
     const totalApplications = applications.length;
-    document.querySelector('#opportunities-count').textContent = activeOpportunities;
-    document.querySelector('#applications-count').textContent = totalApplications;
+    document.querySelector('#opportunities-count').textContent =
+      activeOpportunities;
+    document.querySelector('#applications-count').textContent =
+      totalApplications;
   }
 
   addHandlerShowSection(handler, isLoggedIn) {
